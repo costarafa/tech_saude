@@ -1,8 +1,10 @@
-import 'dart:html';
-
 import 'package:saude_tech/app/domain/entities/glicemia.dart';
+import 'package:sqflite/sqflite.dart';
 
-class GlicemiaDAOIpml implements GlicemiaDAO{
+
+import '../connection.dart';
+
+class GlicemiaDAOImpl implements GlicemiaDAO{
   Database _db;
 
   @override
@@ -39,11 +41,5 @@ class GlicemiaDAOIpml implements GlicemiaDAO{
       _db.rawUpdate(sql,[glicemia.valorGlicemia]);
     }
   }
-
-
-
-
-
-
 
 }
