@@ -1,11 +1,10 @@
+import 'package:saude_tech/app/database/sqlite/connection.dart';
 import 'package:saude_tech/app/domain/entities/glicemia.dart';
 import 'package:sqflite/sqflite.dart';
 
 
-import '../connection.dart';
-
-class GlicemiaDAOImpl implements GlicemiaDAO{
-  Database _db;
+class GlicemiaDAO{
+  late Database _db;
 
   @override
   Future<List<Glicemia>> find() async{

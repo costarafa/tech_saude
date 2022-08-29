@@ -1,7 +1,7 @@
 class PressaoArterial{
 
-  int id;
+  dynamic id;
   int valorPressaoArterial;
 
-  PressaoArterial({this.id, this.valorPressaoArterial});
+  PressaoArterial({this.id, required this.valorPressaoArterial});
 }
