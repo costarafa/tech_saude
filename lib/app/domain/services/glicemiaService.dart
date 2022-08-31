@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:saude_tech/app/domain/entities/glicemia.dart';
 import 'package:saude_tech/app/domain/exception/domain_layer_exception.dart';
+import 'package:saude_tech/app/domain/interfaces/glicemia_dao.dart';
 
 class GlicemiaService{
   var _dao = GetIt.I.get<GlicemiaDAO>();

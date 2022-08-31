@@ -1,6 +1,6 @@
 import 'package:saude_tech/app/domain/entities/glicemia.dart';
 
-abstract class QuentinhaDAO{
+abstract class GlicemiaDAO{
 
   save(Glicemia glicemia); 
 
