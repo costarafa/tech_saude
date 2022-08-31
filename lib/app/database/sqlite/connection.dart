@@ -1,4 +1,5 @@
 import 'package:path/path.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:sqflite/sqflite.dart';
 
 import '../script.dart';
@@ -29,12 +30,14 @@ class Conexao {
   static Database? _db;
   static Future<Database> abrirConexao() async {
     if (_db == null) {
-      var path = join(await getDatabasesPath(), 'banco2.db');
+      var path = join(await getDatabasesPath(), 'banco1.db');
       _db = await openDatabase(
         path,
-        version: 1,
+        version: 2,
         onCreate: (db, version) {
-          db.execute(criarBanco);
+          for (var comando in criarBanco) {
+            db.execute(comando);
+          }
         },
       );
     }

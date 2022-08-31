@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget{
@@ -13,7 +12,7 @@ class MyApp extends StatelessWidget{
         primarySwatch: Colors.pink,
       ),
       routes:{
-        HOME: (context) => GlicemiaList()
+        // HOME: (context) => GlicemiaList()
       },
     );
   }

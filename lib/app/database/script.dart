@@ -11,7 +11,7 @@ INSERT INTO glicemia(valorGlicemia) VALUES ('150')
 
 """;
 
-final String  criarBanco = 
+final criarBanco = [
   '''
     CREATE TABLE usuario (
     id INTEGER PRIMARY KEY,
@@ -19,4 +19,5 @@ final String  criarBanco =
     email TEXT NOT NULL,
     senha TEXT NOT NULL,
     telefone TEXT NOT NULL
-    )''';
+    )'''
+];
