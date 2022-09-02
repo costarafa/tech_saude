@@ -6,7 +6,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 void main() {
-  late UsuarioDao usuarioDao;
+ UsuarioDao usuarioDao;
   sqfliteFfiInit();
 
   databaseFactory = databaseFactoryFfi;
@@ -16,7 +16,7 @@ void main() {
   });
 
   tearDown(() async {
-    String path = join(await getDatabasesPath(), 'banco1.db');
+    String path = join(await getDatabasesPath(), 'banco.db');
     deleteDatabase(path); // irá excluir o banco - não use na produção
   });
 

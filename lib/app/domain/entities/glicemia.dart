@@ -3,5 +3,5 @@ class Glicemia{
   int valorGlicemia;
 
 
-  Glicemia({this.id, required this.valorGlicemia});
+  Glicemia({this.id,this.valorGlicemia});
 }

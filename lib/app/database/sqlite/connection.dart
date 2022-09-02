@@ -7,7 +7,7 @@ import '../script.dart';
 
 
 class Connection{
-  static Database? _db;
+  static Database _db;
 
   static Future <Database> get() async{
 
@@ -22,15 +22,15 @@ class Connection{
         }
       );
     }
-    return _db!;
+    return _db;
   }
 }
 
 class Conexao {
-  static Database? _db;
+  static Database _db;
   static Future<Database> abrirConexao() async {
     if (_db == null) {
-      var path = join(await getDatabasesPath(), 'banco1.db');
+      var path = join(await getDatabasesPath(), 'banco.db');
       _db = await openDatabase(
         path,
         version: 2,
@@ -41,6 +41,6 @@ class Conexao {
         },
       );
     }
-    return _db!;
+    return _db;
   }
 }

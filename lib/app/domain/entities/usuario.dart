@@ -6,5 +6,5 @@ class Usuario {
   final String telefone;
 
 
-  Usuario({this.id, required this.nome, required this.email, required this.senha, required this.telefone});
+  Usuario({this.id,  this.nome,  this.email, this.senha, this.telefone});
 }

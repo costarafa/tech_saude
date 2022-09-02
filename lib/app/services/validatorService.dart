@@ -1,6 +1,6 @@
 
   class Validator{
-    String? validarNome(String value) {
+    String validarNome(String value) {
     String patttern = r'(^[a-zA-Z ]*$)';
     RegExp regExp = new RegExp(patttern);
     if (value.length == 0) {
@@ -10,7 +10,7 @@
     }
     return null;
   }
-  String? validarCelular(String value) {
+  String validarCelular(String value) {
     String patttern = r'(^[0-9]*$)';
     RegExp regExp = new RegExp(patttern);
     if (value.length == 0) {
@@ -22,7 +22,7 @@
     }
     return null;
   }
-  String? validarSenha(String value) {
+  String validarSenha(String value) {
     String pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
     RegExp regExp = new RegExp(pattern);
     if (value.length == 0) {
@@ -33,7 +33,7 @@
       return null;
     }
   }
-  String? validarEmail(String value) {
+  String validarEmail(String value) {
     String pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
     RegExp regExp = new RegExp(pattern);
     if (value.length == 0) {

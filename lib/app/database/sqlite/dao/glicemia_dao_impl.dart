@@ -1,12 +1,14 @@
-import 'package:saude_tech/app/database/sqlite/connection.dart';
+import 'package:saude_tech/app/dao/glicemia_dao.dart';
 import 'package:saude_tech/app/domain/entities/glicemia.dart';
-// ignore: import_of_legacy_library_into_null_safe
 import 'package:sqflite/sqflite.dart';
 
 
-class GlicemiaDAO{
-   Database _db;
+import '../connection.dart';
 
+class GlicemiaDAOImpl implements GlicemiaDAO{
+  Database _db;
+
+  @override
   Future<List<Glicemia>> find() async{
     _db = await Connection.get();
     
@@ -22,6 +24,7 @@ class GlicemiaDAO{
     return lista;
   }
 
+  @override
   remove(int id) async{
     _db = await Connection.get();
     var sql = 'DELETE FROM glicemia WHERE id = ?';

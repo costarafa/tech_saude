@@ -4,5 +4,5 @@ class Familia{
   String nome;
   String cpf;
 
-  Familia({this.id, required this.nome, required this.cpf});
+  Familia({this.id,  this.nome,  this.cpf});
 }

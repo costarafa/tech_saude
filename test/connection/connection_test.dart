@@ -8,7 +8,7 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 void main() {
   sqfliteFfiInit();
   databaseFactory = databaseFactoryFfi;
-  late Database db;
+   Database db;
 
   setUp(() async {
     db = (await Conexao.abrirConexao());

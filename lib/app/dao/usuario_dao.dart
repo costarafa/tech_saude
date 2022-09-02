@@ -9,7 +9,7 @@ class UsuarioDao extends StatelessWidget {
     throw UnimplementedError();
   }
 
-  const UsuarioDao({Key? key}) : super(key: key);
+  const UsuarioDao({Key key}) : super(key: key);
 
   Future<bool> salvar(Usuario usuario) async {
     Database db = await Conexao.abrirConexao();
@@ -35,11 +35,11 @@ class UsuarioDao extends StatelessWidget {
   }
 
   Future<List<Usuario>> listarTodos() async {
-    late Database database;
+     Database database;
     try {
       const sql = 'SELECT * FROM usuario';
       database = await Conexao.abrirConexao();
-      List<Map<String, Object?>> resultado = (await database.rawQuery(sql));
+      List<Map<String, Object>> resultado = (await database.rawQuery(sql));
       if (resultado.isEmpty) throw Exception('Sem registros');
       List<Usuario> usuarios = resultado.map((linha) {
         return Usuario(
@@ -58,7 +58,7 @@ class UsuarioDao extends StatelessWidget {
   }
 
   Future<bool> excluir(int id) async {
-    late Database db;
+     Database db;
     try {
       const sql = 'DELETE FROM usuario WHERE id = ?';
       db = await Conexao.abrirConexao();
@@ -71,8 +71,8 @@ class UsuarioDao extends StatelessWidget {
     }
   }
 
-  Widget criarCampo(String rotulo, String? dica,
-      ValueChanged<String>? vincularValor, String? valorInicial) {
+  Widget criarCampo(String rotulo, String dica,
+      ValueChanged<String> vincularValor, String valorInicial) {
     return TextFormField(
       decoration: InputDecoration(label: Text(rotulo), hintText: dica),
       onChanged: vincularValor,

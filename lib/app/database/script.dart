@@ -19,5 +19,7 @@ final criarBanco = [
     email TEXT NOT NULL,
     senha TEXT NOT NULL,
     telefone TEXT NOT NULL
-    )'''
+    )''',
+    '''INSERT INTO usuario(nome, email, senha, telefone) VALUES("Adrieli","adrieli@gmail.com","0000", "44999999999")''',
+    '''INSERT INTO usuario(nome, email, senha, telefone) VALUES("Adrieli K","adrieliK@gmail.com","0001", "44999999999")''',
 ];
