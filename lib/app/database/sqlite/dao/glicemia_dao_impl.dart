@@ -1,4 +1,5 @@
 import 'package:saude_tech/app/domain/entities/glicemia.dart';
+import 'package:saude_tech/app/domain/interfaces/glicemia_dao.dart';
 import 'package:sqflite/sqflite.dart';
 
 
