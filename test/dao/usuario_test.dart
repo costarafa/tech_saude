@@ -24,8 +24,9 @@ void main() {
     var usuario =  Usuario(
         nome: "adrieli",
         email: "adrieli@gmail.com",
-        senha: 'adrieli1010',
-        telefone: '44999999999');
+        senha: "adrieli1010",
+        telefone: "44999999999",
+        cpf: "122.999.666-99");
     var resultado = await usuarioDao.salvar(usuario);
     expect(resultado, true);
   });
@@ -36,7 +37,8 @@ void main() {
         nome: "Adrieli Kethin dos Santos",
         email: "adrielikethin@gmail.com",
         senha: "1010adrieli",
-        telefone: "44888888888");
+        telefone: "44888888888",
+        cpf: "122.999.666-99");
     var resultado = await usuarioDao.alterar(usuario);
     expect(resultado, true);
   });

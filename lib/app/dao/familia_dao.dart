@@ -1,59 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:saude_tech/app/database/sqlite/connection.dart';
-import 'package:saude_tech/app/domain/entities/usuario.dart';
+import 'package:saude_tech/app/domain/entities/familia.dart';
 import 'package:sqflite/sqflite.dart';
 
-class UsuarioDao extends StatelessWidget {
+class FamiliaDao extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     throw UnimplementedError();
   }
 
-  const UsuarioDao({Key key}) : super(key: key);
+  const FamiliaDao({Key key}) : super(key: key);
 
-  Future<bool> salvar(Usuario usuario) async {
+  Future<bool> salvar(Familia familia) async {
     Database db = await Conexao.abrirConexao();
     const sql =
-        'INSERT INTO usuario (nome, email, senha, telefone, cpf) VALUES (?,?,?,?,?)';
+        'INSERT INTO familia (nome, descricao) VALUES (?,?)';
     var linhasAfetadas = await db.rawInsert(
-        sql, [usuario.nome, usuario.email, usuario.senha, usuario.telefone, usuario.cpf]);
+        sql, [familia.nome, familia.descricao]);
     return linhasAfetadas > 0;
   }
 
-  Future<bool> alterar(Usuario usuario) async {
+  Future<bool> alterar(Familia familia) async {
     const sql =
-        'UPDATE usuario SET nome = ?, email=?, senha=?, telefone=?, cpf=? WHERE id = ?';
+        'UPDATE familia SET nome = ?, descricao=? WHERE id = ?';
     Database db = await Conexao.abrirConexao();
     var linhasAfetadas = await db.rawUpdate(sql, [
-      usuario.nome,
-      usuario.email,
-      usuario.senha,
-      usuario.telefone,
-      usuario.cpf,
-      usuario.id
+      familia.nome,
+      familia.descricao,
+      familia.id
     ]);
     return linhasAfetadas > 0;
   }
 
-  Future<List<Usuario>> listarTodos() async {
+  Future<List<Familia>> listarTodos() async {
      Database database;
     try {
-      const sql = 'SELECT * FROM usuario';
+      const sql = 'SELECT * FROM familia';
       database = await Conexao.abrirConexao();
       List<Map<String, Object>> resultado = (await database.rawQuery(sql));
       if (resultado.isEmpty) throw Exception('Sem registros');
-      List<Usuario> usuarios = resultado.map((linha) {
-        return Usuario(
+      List<Familia> familias = resultado.map((linha) {
+        return Familia(
             id: linha['id'] as int,
             nome: linha['nome'].toString(),
-            email: linha['email'].toString(),
-            senha: linha['senha'].toString(),
-            telefone: linha['telefone'].toString(),
-            cpf: linha['cpf'].toString());
+            descricao: linha['descricao'].toString());
       }).toList();
-      return usuarios;
+      return familias;
     } catch (e) {
-      throw Exception('Error ao listar usuários');
+      throw Exception('Error ao listar familias');
     } finally {
       database.close();
     }
@@ -62,7 +56,7 @@ class UsuarioDao extends StatelessWidget {
   Future<bool> excluir(int id) async {
      Database db;
     try {
-      const sql = 'DELETE FROM usuario WHERE id = ?';
+      const sql = 'DELETE FROM familia WHERE id = ?';
       db = await Conexao.abrirConexao();
       int linhasAfetadas = await db.rawDelete(sql, [id]);
       return linhasAfetadas > 0;
@@ -72,4 +66,5 @@ class UsuarioDao extends StatelessWidget {
       db.close();
     }
   }
+
 }
