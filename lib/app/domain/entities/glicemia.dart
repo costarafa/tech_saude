@@ -1,7 +1,7 @@
 class Glicemia{
-  int id;
+  dynamic id;
   int valorGlicemia;
 
 
-  Glicemia({this.id, this.valorGlicemia});
+  Glicemia({this.id,this.valorGlicemia});
 }

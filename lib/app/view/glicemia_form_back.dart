@@ -21,14 +21,4 @@ class GlicemiaFormBack{
     await _service.save(glicemia);
   }
 
-  String validateValorGlicemia(String valorGlicemia){
-    try{
-      _service.validateValorGlicemia(valorGlicemia);
-      _valorGlicemiaIsValid = true;
-      return null;
-    }catch(e){
-      _valorGlicemiaIsValid = false;
-      return e.toString();
-    }
-  }
 }

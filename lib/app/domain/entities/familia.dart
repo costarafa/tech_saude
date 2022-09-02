@@ -1,8 +1,8 @@
 class Familia{
 
-  int id;
+  dynamic id;
   String nome;
-  String cpf;
+  String descricao;
 
-  Familia({this.id, this.nome, this.cpf});
+  Familia({this.id,  this.nome,  this.descricao});
 }
