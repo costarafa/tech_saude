@@ -8,7 +8,7 @@ final _form = GlobalKey<FormState>();
 
     Widget fieldValorGlicemia(GlicemiaFormBack back){
       return TextFormField(
-        validator: back.validateValorGlicemia,
+        // validator: back.validateValorGlicemia,
         onSaved: (newValue) => back.glicemia.valorGlicemia = int.parse(newValue),
         initialValue: back.glicemia.valorGlicemia.toString(),
         keyboardType: TextInputType.number,
