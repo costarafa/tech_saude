@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:path/path.dart';
-import 'package:saude_tech/app/dao/familia_dao.dart';
+import 'package:saude_tech/app/database/dao/familia_dao.dart';
+
 import 'package:saude_tech/app/domain/entities/familia.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';

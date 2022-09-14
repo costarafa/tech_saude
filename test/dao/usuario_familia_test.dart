@@ -1,13 +1,13 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:path/path.dart';
-import 'package:saude_tech/app/dao/usuario_familia_dao.dart';
+import 'package:saude_tech/app/database/dao/usuario_familia_dao.dart';
 
 import 'package:saude_tech/app/domain/entities/usuario_familia.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 void main() {
- UsuarioFamiliaDao usuarioFamiliaDao;
+  UsuarioFamiliaDao usuarioFamiliaDao;
   sqfliteFfiInit();
 
   databaseFactory = databaseFactoryFfi;
@@ -21,10 +21,9 @@ void main() {
     deleteDatabase(path); // irá excluir o banco - não use na produção
   });
 
-  test("Persistir no banco de dados uma usuario dentro de uma familia", () async {
-    var usuarioFamilia =  UsuarioFamilia(
-        usuario_id: 1,
-        familia_id: 1);
+  test("Persistir no banco de dados uma usuario dentro de uma familia",
+      () async {
+    var usuarioFamilia = UsuarioFamilia(usuario_id: 1, familia_id: 1);
     var resultado = await usuarioFamiliaDao.salvar(usuarioFamilia);
     expect(resultado, true);
   });
