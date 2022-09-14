@@ -37,16 +37,16 @@ final _form = GlobalKey<FormState>();
           ],
         ),
       );
-      body: Padding(
-        padding: EdgeInsets.all(10),
-        child: Form(
-          key: _form,
-          child: Column(
-            children: [
-              fieldValorGlicemia(_back)
-            ],
-            ),
-        ),       
-      );
+        body: Padding(
+          padding: EdgeInsets.all(10),
+          child: Form(
+            key: _form,
+            child: Column(
+              children: [
+                fieldValorGlicemia(_back)
+              ],
+              ),
+          ),       
+        );
     }
 }

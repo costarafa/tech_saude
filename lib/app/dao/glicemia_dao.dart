@@ -7,7 +7,7 @@ class GlicemiaDAO {
   Database _db;
 
   Future<List<Glicemia>> find() async {
-    _db = await Connection.get();
+    _db = await Conexao.abrirConexao();
 
     List<Map<String, dynamic>> resultado = await _db.query('glicemia');
     List<Glicemia> lista = List.generate(resultado.length, (i) {
@@ -18,13 +18,13 @@ class GlicemiaDAO {
   }
 
   remove(int id) async {
-    _db = await Connection.get();
+    _db = await Conexao.abrirConexao();
     var sql = 'DELETE FROM glicemia WHERE id = ?';
     _db.rawDelete(sql, [id]);
   }
 
   save(Glicemia glicemia) async {
-    _db = await Connection.get();
+    _db = await Conexao.abrirConexao();
     var sql;
     if (glicemia.id == null) {
       sql = 'INSERT INTO glicemia (valorGlicemia) VALUES (?)';
