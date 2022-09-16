@@ -15,7 +15,7 @@ class Botao extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: ElevatedButton.icon(
         label: Text(this.descricao),
-        icon: const Icon(Icons.person),
+        icon: const Icon(Icons.add_circle),
         onPressed: () {
           function();
         },

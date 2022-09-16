@@ -1,6 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:saude_tech/app/view/componentes/botao.dart';
-
 
 class MenuPrincipal extends StatefulWidget {
   const MenuPrincipal({Key key}) : super(key: key);
@@ -13,14 +13,27 @@ class _MenuDoisState extends State<MenuPrincipal> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
+        appBar: AppBar(
+          backgroundColor: Colors.blue,
           title: const Text('Menu'),
           actions: [
-            IconButton(
-                icon: const Icon(Icons.person),
-                onPressed: () =>
-                    Navigator.pushNamed(context, '/addUsuario'))
+            Padding(
+              padding: EdgeInsets.only(right: 10.0),
+              child: Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white, //remove this when you add image.
+                ),
+                child: CachedNetworkImage(
+                  width: 40,
+                  height: 40,
+                  fit: BoxFit.cover,
+                  imageUrl: null,
+                ),
+              ),
+            )
           ],
         ),
         body: Padding(
@@ -31,7 +44,9 @@ class _MenuDoisState extends State<MenuPrincipal> {
                 children: [
                   Botao(
                     descricao: 'Pessão Arterial',
-                    function: () {Navigator.pushNamed(context, '/');},
+                    function: () {
+                      Navigator.pushNamed(context, '/');
+                    },
                     color: Colors.blue,
                   ),
                   SizedBox(
@@ -39,7 +54,9 @@ class _MenuDoisState extends State<MenuPrincipal> {
                   ),
                   Botao(
                     descricao: 'Glicemia',
-                    function: () {Navigator.pushNamed(context, '/');},
+                    function: () {
+                      Navigator.pushNamed(context, '/');
+                    },
                     color: Colors.pink,
                   ),
                 ],
