@@ -11,6 +11,7 @@ class Botao extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      height: 50,
       width: MediaQuery.of(context).size.width,
       child: ElevatedButton.icon(
         label: Text(this.descricao),
