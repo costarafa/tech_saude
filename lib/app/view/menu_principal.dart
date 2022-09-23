@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:saude_tech/app/view/componentes/botao.dart';
+import 'package:saude_tech/app/view/componentes/menuLateral.dart';
+
 
 class MenuPrincipal extends StatefulWidget {
   const MenuPrincipal({Key key}) : super(key: key);
@@ -14,6 +16,14 @@ class _MenuDoisState extends State<MenuPrincipal> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          title: Text("Tech Saúde"),
+          backgroundColor: Colors.green,
+          leading: GestureDetector(
+            onTap: () {Navigator.pushNamed(context, '/menuLateral');},
+            child: Icon(
+              Icons.menu, 
+            ),
+          ),
           backgroundColor: Colors.blue,
           title: const Text('Menu'),
           actions: [
@@ -61,6 +71,7 @@ class _MenuDoisState extends State<MenuPrincipal> {
                   ),
                 ],
               ),
-            )));
+            )),
+            drawer: MenuLateral());
   }
 }
