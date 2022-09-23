@@ -58,4 +58,17 @@ class GlicemiaDAO extends StatelessWidget {
       db.close();
     }
   }
+
+  // ignore: missing_return
+  validateValorGlicemia(int valorGlicemia) {
+    if (valorGlicemia < 100) {
+      return ('Glicemia ok');
+    } else if (valorGlicemia > 100 && valorGlicemia < 125) {
+      return ('Glicemia de Jejum alterada');
+    } else if (valorGlicemia >= 126 && valorGlicemia < 140) {
+      return ('Glicemia acima do nível, tome um remédio');
+    } else if (valorGlicemia > 140 && valorGlicemia < 200) {
+      return ('Você está intolerante a Glicose');
+    }
+  }
 }

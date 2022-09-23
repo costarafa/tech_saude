@@ -24,8 +24,8 @@ class PressaoArterialDAO extends StatelessWidget {
     const sql =
         'UPDATE pressaoArterial SET valorPressaoArterial=? WHERE id = ?';
     Database db = await Conexao.abrirConexao();
-    var linhasAfetadas =
-        await db.rawUpdate(sql, [pressaoArterial.valorPressaoArterial, pressaoArterial.id]);
+    var linhasAfetadas = await db.rawUpdate(
+        sql, [pressaoArterial.valorPressaoArterial, pressaoArterial.id]);
     return linhasAfetadas > 0;
   }
 
@@ -60,6 +60,20 @@ class PressaoArterialDAO extends StatelessWidget {
       throw Exception('Erro ao excluir');
     } finally {
       db.close();
+    }
+  }
+
+// Hoje se considera que a pressão está ótima quando o valor de medição fica na faixa de 12 por 8 — ou, como
+//  preferem os especialistas, 120 por 80 milímetros de mercúrio (mmHg).
+//  Se o índice passou dos 14 por 9, aí ela é considerada alta
+
+  validateValorPressaoArterial(int valorPressao) {
+    if (valorPressao <= 11) {
+      return ('Pressão baixa!! tome um remédio');
+    } else if (valorPressao <= 12) {
+      return ('Pressão ok');
+    } else if (valorPressao > 12 && valorPressao <= 14) {
+      return ('Pressão alta! Tome remedio');
     }
   }
 }

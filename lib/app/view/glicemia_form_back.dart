@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
 import 'package:saude_tech/app/domain/entities/glicemia.dart';
 import 'package:saude_tech/app/services/glicemiaService.dart';
-import 'package:saude_tech/app/services/glicemiaService.dart';
 
 
 class GlicemiaFormBack {
@@ -18,8 +17,13 @@ class GlicemiaFormBack {
     glicemia = (parameter == null) ? Glicemia() : parameter;
   }
 
+
+
   //salvar
   save() async {
     await _service.save(glicemia);
   }
+
+  
+
 }
