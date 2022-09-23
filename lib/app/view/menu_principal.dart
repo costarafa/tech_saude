@@ -24,8 +24,6 @@ class _MenuDoisState extends State<MenuPrincipal> {
               Icons.menu, 
             ),
           ),
-          backgroundColor: Colors.blue,
-          title: const Text('Menu'),
           actions: [
             Padding(
               padding: EdgeInsets.only(right: 10.0),
