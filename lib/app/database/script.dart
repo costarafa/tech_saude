@@ -27,7 +27,7 @@ final criarBanco = [
     FOREIGN KEY(familia_id) REFERENCES familia(id)
     )''',
   '''INSERT INTO usuario_familia(usuario_id, familia_id) VALUES(1,1)''',
-  '''INSERT INTO usuario_familia(usuario_id, familia_id) VALUES(2,1)'''
+  '''INSERT INTO usuario_familia(usuario_id, familia_id) VALUES(2,1)''',
       """
     CREATE TABLE glicemia(
       id INTEGER NOT NULL PRIMARY KEY

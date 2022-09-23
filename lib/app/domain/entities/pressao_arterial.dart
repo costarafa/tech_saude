@@ -1,7 +1,7 @@
 class PressaoArterial{
 
   dynamic id;
-  int valorPressaoArterial;
+  String valorPressaoArterial;
 
   PressaoArterial({this.id, this.valorPressaoArterial});
 }

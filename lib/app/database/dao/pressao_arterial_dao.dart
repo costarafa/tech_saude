@@ -14,7 +14,7 @@ class PressaoArterialDAO extends StatelessWidget {
 
   Future<bool> salvar(PressaoArterial pressaoArterial) async {
     Database db = await Conexao.abrirConexao();
-    const sql = 'INSERT INTO pressaoArterail (valorPressaoArterial) VALUES (?)';
+    const sql = 'INSERT INTO pressaoArterial (valorPressaoArterial) VALUES (?)';
     var linhasAfetadas =
         await db.rawInsert(sql, [pressaoArterial.valorPressaoArterial]);
     return linhasAfetadas > 0;
@@ -25,7 +25,7 @@ class PressaoArterialDAO extends StatelessWidget {
         'UPDATE pressaoArterial SET valorPressaoArterial=? WHERE id = ?';
     Database db = await Conexao.abrirConexao();
     var linhasAfetadas =
-        await db.rawUpdate(sql, [pressaoArterial.valorPressaoArterial]);
+        await db.rawUpdate(sql, [pressaoArterial.valorPressaoArterial, pressaoArterial.id]);
     return linhasAfetadas > 0;
   }
 
