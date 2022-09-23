@@ -20,23 +20,18 @@ class MenuLateral extends StatelessWidget {
                 ),
               ),
           ListTile(
-            leading: Icon(Icons.input),
-            title: Text('Welcome'),
-            onTap: () => {},
-          ),
-          ListTile(
-            leading: Icon(Icons.verified_user),
-            title: Text('Profile'),
-            onTap: () => {Navigator.of(context).pop()},
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
+            leading: Icon(Icons.person),
+            title: Text('Familia'),
             onTap: () => {Navigator.of(context).pop()},
           ),
           ListTile(
             leading: Icon(Icons.border_color),
-            title: Text('Feedback'),
+            title: Text('Pressão Arterial'),
+            onTap: () => {Navigator.of(context).pop()},
+          ),
+          ListTile(
+            leading: Icon(Icons.border_color),
+            title: Text('Glicemia'),
             onTap: () => {Navigator.of(context).pop()},
           ),
           ListTile(
