@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saude_tech/app/view/componentes/botao.dart';
-
+import 'package:saude_tech/app/view/componentes/menuLateral.dart';
 
 class MenuPrincipal extends StatefulWidget {
   const MenuPrincipal({Key key}) : super(key: key);
@@ -13,15 +13,15 @@ class _MenuDoisState extends State<MenuPrincipal> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-          title: const Text('Menu'),
-          actions: [
-            IconButton(
-                icon: const Icon(Icons.person),
-                onPressed: () =>
-                    Navigator.pushNamed(context, '/addUsuario'))
-          ],
+        appBar: AppBar(
+          title: Text("Tech Saúde"),
+          backgroundColor: Colors.green,
+          leading: GestureDetector(
+            onTap: () {Navigator.pushNamed(context, '/menuLateral');},
+            child: Icon(
+              Icons.menu, 
+            ),
+          ),
         ),
         body: Padding(
             padding: const EdgeInsets.all(20),
@@ -31,7 +31,9 @@ class _MenuDoisState extends State<MenuPrincipal> {
                 children: [
                   Botao(
                     descricao: 'Pessão Arterial',
-                    function: () {Navigator.pushNamed(context, '/');},
+                    function: () {
+                      Navigator.pushNamed(context, '/');
+                    },
                     color: Colors.blue,
                   ),
                   SizedBox(
@@ -39,11 +41,14 @@ class _MenuDoisState extends State<MenuPrincipal> {
                   ),
                   Botao(
                     descricao: 'Glicemia',
-                    function: () {Navigator.pushNamed(context, '/');},
+                    function: () {
+                      Navigator.pushNamed(context, '/');
+                    },
                     color: Colors.pink,
                   ),
                 ],
               ),
-            )));
+            )),
+            drawer: MenuLateral());
   }
 }

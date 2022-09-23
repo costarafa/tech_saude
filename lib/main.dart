@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saude_tech/app/view/componentes/menuLateral.dart';
 import 'package:saude_tech/app/view/menu_principal.dart';
 
 void main() {
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/': (context) => const MenuPrincipal(),
+        '/menuLateral': (context) => MenuLateral(),
         // '/addUsuario': (context) => const AdicionarUsuario()
       },
     );
