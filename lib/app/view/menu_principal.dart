@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:saude_tech/app/view/componentes/botao.dart';
 import 'package:saude_tech/app/view/componentes/menuLateral.dart';
+
 
 class MenuPrincipal extends StatefulWidget {
   const MenuPrincipal({Key key}) : super(key: key);
@@ -22,6 +24,27 @@ class _MenuDoisState extends State<MenuPrincipal> {
               Icons.menu, 
             ),
           ),
+          backgroundColor: Colors.blue,
+          title: const Text('Menu'),
+          actions: [
+            Padding(
+              padding: EdgeInsets.only(right: 10.0),
+              child: Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white, //remove this when you add image.
+                ),
+                child: CachedNetworkImage(
+                  width: 40,
+                  height: 40,
+                  fit: BoxFit.cover,
+                  imageUrl: null,
+                ),
+              ),
+            )
+          ],
         ),
         body: Padding(
             padding: const EdgeInsets.all(20),
