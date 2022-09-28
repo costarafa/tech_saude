@@ -36,6 +36,7 @@ dependencies:
   sqflite_common_ffi: ^2.1.0+2
   get_it:
   cached_network_image :
+  url_launcher: ^6.1.5
 
 dev_dependencies:
   flutter_test:
