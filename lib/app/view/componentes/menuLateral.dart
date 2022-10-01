@@ -20,7 +20,7 @@ class MenuLateral extends StatelessWidget {
           ),
           CartaoEmail(),
           ListTile(
-            leading: Icon(Icons.person),
+            leading: Icon(Icons.escalator_warning_outlined),
             title: Text('Família'),
             onTap: () => {},
           ),
