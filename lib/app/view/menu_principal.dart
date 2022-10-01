@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saude_tech/app/view/componentes/botao.dart';
+import 'package:saude_tech/app/view/componentes/cartao_generico.dart';
 import 'package:saude_tech/app/view/componentes/menuLateral.dart';
 
 class MenuPrincipal extends StatefulWidget {
@@ -31,23 +32,56 @@ class _MenuDoisState extends State<MenuPrincipal> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Botao(
-                    descricao: 'Pessão Arterial',
-                    function: () {
-                      Navigator.pushNamed(context, '/');
-                    },
-                    color: Colors.blue,
+                  Text(
+                    "Olá Adrieli",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+                  ),
+                  Text(
+                    "Bem vindo de volta!",
+                    style: TextStyle(fontSize: 25),
                   ),
                   SizedBox(
                     height: 20,
                   ),
-                  Botao(
-                    descricao: 'Glicemia',
-                    function: () {
-                      Navigator.pushNamed(context, '/');
-                    },
-                    color: Colors.pink,
+                  CartaoGenerico(
+                    title: Text("VALOR: 180 MMHG"),
+                    subtitle: Text("30/09/2022"),
                   ),
+                  CartaoGenerico(
+                    title: Text("VALOR: 160 MMHG"),
+                    subtitle: Text("30/09/2022"),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Botao(
+                      descricao: 'Pressão Arterial',
+                      function: () {
+                        Navigator.pushNamed(context, '/');
+                      },
+                      color: Colors.black54,
+                      icon: Icon(Icons.add_chart_sharp)),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  CartaoGenerico(
+                    title: Text("VALOR: 200 MH/DL"),
+                    subtitle: Text("30/09/2022"),
+                  ),
+                  CartaoGenerico(
+                    title: Text("VALOR: 100 MH/DL"),
+                    subtitle: Text("30/09/2022"),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Botao(
+                      descricao: 'Glicemia',
+                      function: () {
+                        Navigator.pushNamed(context, '/');
+                      },
+                      color: Colors.black54,
+                      icon: Icon(Icons.add_chart_sharp)),
                 ],
               ),
             )),
