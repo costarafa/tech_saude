@@ -78,7 +78,7 @@ class _MenuDoisState extends State<MenuPrincipal> {
                   Botao(
                       descricao: 'Glicemia',
                       function: () {
-                        Navigator.pushNamed(context, '/');
+                        Navigator.pushNamed(context, '/listarGlicemia');
                       },
                       color: Colors.black54,
                       icon: Icon(Icons.add_chart_sharp)),

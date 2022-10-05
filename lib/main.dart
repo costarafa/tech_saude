@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:saude_tech/app/view/componentes/menuLateral.dart';
 import 'package:saude_tech/app/view/menu_principal.dart';
+import 'package:saude_tech/app/view/menu_responsivo_glicemia.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,8 +18,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.teal),
       ),
       routes: {
-        '/': (context) => const MenuPrincipal(),
+        '/': (context) =>  MenuPrincipal(),
         '/menuLateral': (context) => MenuLateral(),
+        '/listarGlicemia': (context) => MenuResponsivoGlicemia(),
         // '/addUsuario': (context) => const AdicionarUsuario()
       },
     );
