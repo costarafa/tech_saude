@@ -7,8 +7,8 @@ import '../script.dart';
 class Conexao {
   static Database _db;
   static Future<Database> abrirConexao() async {
-    if (_db == null) {
-      var path = join(await getDatabasesPath(), 'banco.db');
+    if (_db == null || _db.isOpen == false) {
+      var path = join(await getDatabasesPath(), 'banco2.db');
       _db = await openDatabase(
         path,
         version: 2,

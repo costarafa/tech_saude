@@ -6,7 +6,8 @@ class CartaoGenerico extends StatelessWidget {
   Text title;
   Text subtitle;
   dynamic funcao;
-  CartaoGenerico({Key key, this.title, this.subtitle, this.funcao})
+  String leading;
+  CartaoGenerico({Key key, this.title, this.subtitle, this.funcao, this.leading})
       : super(key: key);
 
   @override
