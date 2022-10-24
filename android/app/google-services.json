@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "680669654381",
+    "project_id": "tech-saude",
+    "storage_bucket": "tech-saude.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:680669654381:android:d453cbb285324001e9be64",
+        "android_client_info": {
+          "package_name": "com.example.tech_saude"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "680669654381-3fs5ftmmflnpg4kia571o5l0r460hpng.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tech_saude",
+            "certificate_hash": "4d5cbcda5b717434dbb2db18baf5f4316763ac50"
+          }
+        },
+        {
+          "client_id": "680669654381-pp8d5nrd4euaoa01baus42euq0ue4a39.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfXUn-4cZnKTGp1K2AR15pTKKsvJbwFT4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "680669654381-pp8d5nrd4euaoa01baus42euq0ue4a39.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

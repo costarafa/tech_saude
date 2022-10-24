@@ -7,7 +7,8 @@ import 'package:saude_tech/app/view/menu_responsivo_pressao.dart';
 import 'package:saude_tech/app/view/pressao_arterial_form.dart';
 import 'package:saude_tech/app/view/tela_login.dart';
 
-void main() {
+void main() async {
+  // await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
