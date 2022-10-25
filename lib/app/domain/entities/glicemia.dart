@@ -1,6 +1,6 @@
 class Glicemia{
   dynamic id;
-  int valorGlicemia;
+  String valorGlicemia;
 
 
   Glicemia({this.id,this.valorGlicemia});

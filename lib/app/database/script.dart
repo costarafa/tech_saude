@@ -34,9 +34,9 @@ final criarBanco = [
       ,valorGlicemia VARCHAR(200) NOT NULL
     )
     """,
-  """
-    INSERT INTO glicemia(valorGlicemia) VALUES ('150')
-    """,
+  ''' INSERT INTO glicemia(id, valorGlicemia) VALUES (1, '150') ''',
+  ''' INSERT INTO glicemia(id, valorGlicemia) VALUES (2, '130') ''',
+  ''' INSERT INTO glicemia(id, valorGlicemia) VALUES (3, '140') ''',
   """
     CREATE TABLE pressaoArterial(
       id INTEGER NOT NULL PRIMARY KEY

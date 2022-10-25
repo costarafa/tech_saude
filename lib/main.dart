@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:saude_tech/app/view/componentes/cartao_listar_glicemia.dart';
 import 'package:saude_tech/app/view/componentes/cartao_listar_pressao.dart';
 import 'package:saude_tech/app/view/menuLateral.dart';
 import 'package:saude_tech/app/view/menu_principal.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
         '/': (context) =>  MenuPrincipal(),
         '/login': (context) =>  TelaLogin(),
         '/menuLateral': (context) => MenuLateral(),
-        '/listarGlicemia': (context) => MenuResponsivoGlicemia(),
+        '/listarGlicemia': (context) => ListarGlicemia(),
         '/listarPressao': (context) => ListarPressao(),
         '/cadastrarPressao': (context) => PressaoForm(),
         // '/addUsuario': (context) => const AdicionarUsuario()

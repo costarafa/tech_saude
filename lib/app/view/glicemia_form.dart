@@ -8,7 +8,7 @@ class GlicemiaForm extends StatelessWidget {
   Widget fieldValorGlicemia(GlicemiaFormBack back) {
     return TextFormField(
       //validator: back.validateValorGlicemia,
-      onSaved: (newValue) => back.glicemia.valorGlicemia = int.parse(newValue),
+      //onSaved: (newValue) => back.glicemia.valorGlicemia = int.parse(newValue),
       initialValue: back.glicemia.valorGlicemia.toString(),
       keyboardType: TextInputType.number,
       decoration: InputDecoration(labelText: 'Valor Da Glicemia'),

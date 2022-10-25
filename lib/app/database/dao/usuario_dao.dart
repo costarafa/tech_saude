@@ -17,6 +17,7 @@ class UsuarioDao extends StatelessWidget {
         'INSERT INTO usuario (nome, email, senha, telefone, cpf) VALUES (?,?,?,?,?)';
     var linhasAfetadas = await db.rawInsert(
         sql, [usuario.nome, usuario.email, usuario.senha, usuario.telefone, usuario.cpf]);
+    db.close();
     return linhasAfetadas > 0;
   }
 
@@ -32,6 +33,7 @@ class UsuarioDao extends StatelessWidget {
       usuario.cpf,
       usuario.id
     ]);
+    db.close();
     return linhasAfetadas > 0;
   }
 
@@ -51,6 +53,7 @@ class UsuarioDao extends StatelessWidget {
             telefone: linha['telefone'].toString(),
             cpf: linha['cpf'].toString());
       }).toList();
+      database.close();
       return usuarios;
     } catch (e) {
       throw Exception('Error ao listar usuários');
@@ -65,6 +68,7 @@ class UsuarioDao extends StatelessWidget {
       const sql = 'DELETE FROM usuario WHERE id = ?';
       db = await Conexao.abrirConexao();
       int linhasAfetadas = await db.rawDelete(sql, [id]);
+      db.close();
       return linhasAfetadas > 0;
     } catch (e) {
       throw Exception('Erro ao excluir');
