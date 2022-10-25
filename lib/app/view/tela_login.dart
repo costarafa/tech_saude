@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:saude_tech/app/view/componentes/botao.dart';
 import 'package:saude_tech/app/view/componentes/cartao_generico.dart';
 import 'package:saude_tech/app/view/componentes/input.dart';
-import 'package:saude_tech/app/view/componentes/menuLateral.dart';
+import 'package:saude_tech/app/view/menuLateral.dart';
 
 class TelaLogin extends StatefulWidget {
   const TelaLogin({Key key}) : super(key: key);
@@ -17,18 +17,6 @@ class _MenuDoisState extends State<TelaLogin> {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown]);
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Tech Saúde"),
-          backgroundColor: Colors.green,
-          leading: GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, '/menuLateral');
-            },
-            child: Icon(
-              Icons.menu,
-            ),
-          ),
-        ),
         body: Padding(
             padding: const EdgeInsets.all(20),
             child: Center(
@@ -41,32 +29,39 @@ class _MenuDoisState extends State<TelaLogin> {
                   ),
                   Text(
                     "Por favor faça seu login:",
-                    style: TextStyle(fontSize: 25),
+                    style: TextStyle(fontSize: 25, color: Colors.grey),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 40,
                   ),
-                 CamposForm(
-                  dica: "Username ou email",
-                  rotulo: "",
-                  valorInicial: ""
-                 ),
+                  CamposForm(
+                      dica: "", rotulo: "Email", valorInicial: "", teclado: TextInputType.emailAddress),
                   SizedBox(
                     height: 15,
                   ),
-                  CamposForm(
-                      dica: "Username ou email", rotulo: "", valorInicial: ""),
+                  CamposForm(dica: "", rotulo: "Senha", valorInicial: "", teclado: TextInputType.visiblePassword),
+                  SizedBox(
+                    height: 30,
+                  ),
                   Botao(
                       descricao: 'Entrar',
                       function: () {
                         Navigator.pushNamed(context, '/');
                       },
-                      color: Colors.black54,
-                      icon: Icon(Icons.add_chart_sharp)),
+                      color: Colors.green,
+                      icon: Icon(Icons.home)),
                   SizedBox(
-                    height: 20,
+                    height: 150,
                   ),
-              
+                  Text(
+                    "Não possui conta?     ",
+                    style: TextStyle(color: Colors.grey),
+                    textAlign: TextAlign.left,
+                  ),
+                  ListTile(
+                    title: Text('Cadastre-se', textAlign: TextAlign.center,),
+                    onTap: () => {Navigator.pushNamed(context, '/login')}
+                  ),
                 ],
               ),
             )),

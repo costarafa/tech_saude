@@ -22,7 +22,7 @@ class CamposForm extends StatelessWidget {
     return SizedBox(
         width: MediaQuery.of(context).size.width,
         child: TextFormField(
-          decoration: InputDecoration(label: Text(rotulo), hintText: dica),
+          decoration: InputDecoration(label: Text(rotulo), hintText: dica, border: OutlineInputBorder(),),
           onChanged: vincularValor,
           initialValue: valorInicial,
           keyboardAppearance: Brightness.dark,

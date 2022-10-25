@@ -37,7 +37,7 @@ class MenuLateral extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('Sair'),
-            onTap: () => {Navigator.pop(context)},
+            onTap: () => { Navigator.pushNamed(context, '/login')},
           ),
           
         ],
