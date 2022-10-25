@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:saude_tech/app/view/componentes/cartao_listar_pressao.dart';
 import 'package:saude_tech/app/view/menuLateral.dart';
