@@ -60,7 +60,7 @@ class _MenuDoisState extends State<TelaLogin> {
                   ),
                   ListTile(
                     title: Text('Cadastre-se', textAlign: TextAlign.center,),
-                    onTap: () => {Navigator.pushNamed(context, '/login')}
+                    onTap: () => {Navigator.pushNamed(context, '/cadastro')}
                   ),
                 ],
               ),
