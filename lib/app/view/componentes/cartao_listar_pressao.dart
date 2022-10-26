@@ -53,7 +53,8 @@ PressaoArterialDAO pressaoArterialDAO = new PressaoArterialDAO();
                   itemCount: lista.length,
                   itemBuilder: (context, contador) {
                     var pressao = lista[contador];
-                    return ListTile(
+                    return SizedBox(
+                      child: ListTile(
                       title: Text(pressao.valorPressaoArterial),
                       trailing: SizedBox(
                         width: 100,
@@ -84,6 +85,7 @@ PressaoArterialDAO pressaoArterialDAO = new PressaoArterialDAO();
                                               child: const Text("Sim"),
                                               onPressed: () {
                                                 pressaoArterialDAO.excluir(int.parse(pressao.id.toString()));
+                                                Navigator.pushNamed(context, '/listarPressao');
                                               },
                                             ),
                                             ElevatedButton(
@@ -99,6 +101,7 @@ PressaoArterialDAO pressaoArterialDAO = new PressaoArterialDAO();
                           ],
                         ),
                       ),
+                    )
                     );
                   });
             }

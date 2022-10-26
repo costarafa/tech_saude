@@ -17,10 +17,12 @@ class _MenuDoisState extends State<TelaCadastro> {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown]);
     return Scaffold(
+        resizeToAvoidBottomInset: true,
         body: Padding(
             padding: const EdgeInsets.all(20),
+            child: SingleChildScrollView(
             child: Center(
-              child: Column(
+            child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
@@ -98,6 +100,7 @@ class _MenuDoisState extends State<TelaCadastro> {
                 ],
               ),
             ),
+            )
             ),
         drawer: MenuLateral());
   }

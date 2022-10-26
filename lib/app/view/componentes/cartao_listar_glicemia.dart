@@ -86,6 +86,7 @@ GlicemiaDAO glicemiaDAO = new GlicemiaDAO();
                                               child: const Text("Sim"),
                                               onPressed: () {
                                                 glicemiaDAO.excluir(int.parse(glicemia.id.toString()));
+                                                Navigator.pushNamed(context, '/listarGlicemia');
                                               },
                                             ),
                                             ElevatedButton(

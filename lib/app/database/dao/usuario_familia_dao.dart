@@ -34,7 +34,7 @@ class UsuarioFamiliaDao extends StatelessWidget {
             usuario_id: linha['usuario_id'].toString(),
             familia_id: linha['familia_id'].toString());
       }).toList();
-      database.close();
+      database .close();
       return usuarioFamilias;
     } catch (e) {
       throw Exception('Error ao listar ');
