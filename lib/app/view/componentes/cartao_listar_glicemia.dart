@@ -42,8 +42,7 @@ GlicemiaDAO glicemiaDAO = new GlicemiaDAO();
         ),
     body:  
     GridView.count(
-          crossAxisCount: (orientation == Orientation.portrait) ? 1 : 2,
-          childAspectRatio: (1 / .4),
+          crossAxisCount: (orientation == Orientation.portrait) ? 1 : 1,
           children: [
     FutureBuilder(
             future: glicemiaDAO.listarTodos(),
@@ -65,7 +64,7 @@ GlicemiaDAO glicemiaDAO = new GlicemiaDAO();
                               icon: const Icon(Icons.edit),
                               color: Colors.black38,
                               onPressed: () {
-                                Navigator.pushNamed(context, '/editpressao',
+                                Navigator.pushNamed(context, '/editarGlicemia',
                                         arguments: glicemia)
                                     .then((value) {
                                   setState(() {});

@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:saude_tech/app/database/dao/pressao_arterial_dao.dart';
-import 'package:saude_tech/app/domain/entities/pressao_arterial.dart';
+import 'package:saude_tech/app/database/dao/glicemia_dao.dart';
+import 'package:saude_tech/app/domain/entities/glicemia.dart';
 import 'package:saude_tech/app/view/componentes/botao.dart';
 import 'package:saude_tech/app/view/componentes/input.dart';
 import 'package:saude_tech/app/view/menuLateral.dart';
 
-class SalvarPressao extends StatefulWidget {
-  const SalvarPressao({Key key}) : super(key: key);
+class SalvarGlicemia extends StatefulWidget {
+  const SalvarGlicemia({Key key}) : super(key: key);
   @override
-  State<SalvarPressao> createState() => _SalvarPressaoState();
+  State<SalvarGlicemia> createState() => _SalvarGlicemiaState();
 }
 dynamic id;
 String valor;
-class _SalvarPressaoState extends State<SalvarPressao> {
-  PressaoArterialDAO pressaoArterialDAO = new PressaoArterialDAO();
+class _SalvarGlicemiaState extends State<SalvarGlicemia> {
+  GlicemiaDAO glicemiaDAO = new GlicemiaDAO();
 
   @override
   Widget build(BuildContext context) {
     var argumento = ModalRoute.of(context)?.settings.arguments;
     if (argumento != null) {
-      Map<String, Object> pressao = argumento as Map<String, Object>;
-      id = pressao['id'] as int;
-      valor = pressao['valorPressaoArterial'] as String;
+      Map<String, Object> glicemia = argumento as Map<String, Object>;
+      id = glicemia['id'] as int;
+      valor = glicemia['valorGlicemia'] as String;
     }
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown]);
     return Scaffold(
@@ -47,7 +47,7 @@ class _SalvarPressaoState extends State<SalvarPressao> {
                 children: [
                   CamposForm(
                       dica: "",
-                      rotulo: "Valor Pressão Arterial",
+                      rotulo: "Valor Glicemia",
                       valorInicial: "",
                       vincularValor: (value) =>
                           valor = value,
@@ -58,8 +58,8 @@ class _SalvarPressaoState extends State<SalvarPressao> {
                   Botao(
                       descricao: 'Salvar',
                       function: () {
-                        pressaoArterialDAO.salvar(PressaoArterial(valorPressaoArterial: valor));
-                        Navigator.pushNamed(context, '/listarPressao');
+                        glicemiaDAO.salvar(Glicemia(valorGlicemia: valor));
+                        Navigator.pushNamed(context, '/listarGlicemia');
                       },
                       color: Colors.green,
                       icon: Icon(Icons.save)),

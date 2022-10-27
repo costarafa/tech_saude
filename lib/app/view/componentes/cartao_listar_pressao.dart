@@ -41,7 +41,6 @@ PressaoArterialDAO pressaoArterialDAO = new PressaoArterialDAO();
     body:  
     GridView.count(
           crossAxisCount: (orientation == Orientation.portrait) ? 1 : 2,
-          childAspectRatio: (1 / .4),
           children: [
     FutureBuilder(
             future: pressaoArterialDAO.listarTodos(),

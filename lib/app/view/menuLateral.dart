@@ -20,6 +20,11 @@ class MenuLateral extends StatelessWidget {
           ),
           CartaoEmail(),
           ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Home'),
+            onTap: () => { Navigator.pushNamed(context, '/')},
+          ),
+          ListTile(
             leading: Icon(Icons.escalator_warning_outlined),
             title: Text('Família'),
             onTap: () => {},
@@ -27,12 +32,12 @@ class MenuLateral extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.add_circle),
             title: Text('Glicemia'),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => { Navigator.pushNamed(context, '/listarGlicemia')},
           ),
           ListTile(
             leading: Icon(Icons.add_circle),
             title: Text('Pressão Arterial'),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => { Navigator.pushNamed(context, '/listarPressao')},
           ),
           ListTile(
             leading: Icon(Icons.exit_to_app),
