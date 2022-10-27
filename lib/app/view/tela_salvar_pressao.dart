@@ -6,17 +6,30 @@ import 'package:saude_tech/app/view/componentes/botao.dart';
 import 'package:saude_tech/app/view/componentes/input.dart';
 import 'package:saude_tech/app/view/menuLateral.dart';
 
-class SalvarPressao extends StatelessWidget {
-
-  PressaoArterial pressaoArterial;
+class SalvarPressao extends StatefulWidget {
+  const SalvarPressao({Key key}) : super(key: key);
+  @override
+  State<SalvarPressao> createState() => _SalvarPressaoState();
+}
+dynamic id;
+String valor;
+class _SalvarPressaoState extends State<SalvarPressao> {
   PressaoArterialDAO pressaoArterialDAO = new PressaoArterialDAO();
+
   @override
   Widget build(BuildContext context) {
+    var argumento = ModalRoute.of(context)?.settings.arguments;
+    if (argumento != null) {
+      Map<String, Object> pressao = argumento as Map<String, Object>;
+      id = pressao['id'] as int;
+      valor = pressao['nome'] as String;
+    }
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown]);
     return Scaffold(
         body: Padding(
             padding: const EdgeInsets.all(20),
             child: Center(
+                child: Form(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -24,7 +37,8 @@ class SalvarPressao extends StatelessWidget {
                       dica: "",
                       rotulo: "Valor Pressão Arterial",
                       valorInicial: "",
-                      vincularValor: (value) => pressaoArterial.valorPressaoArterial = value,
+                      vincularValor: (value) =>
+                          valor = value,
                       teclado: TextInputType.number),
                   SizedBox(
                     height: 30,
@@ -32,14 +46,14 @@ class SalvarPressao extends StatelessWidget {
                   Botao(
                       descricao: 'Salvar',
                       function: () {
-                        pressaoArterialDAO.salvar(pressaoArterial);
+                        pressaoArterialDAO.salvar(PressaoArterial(valorPressaoArterial: valor));
                         Navigator.pushNamed(context, '/listarPressao');
                       },
                       color: Colors.green,
                       icon: Icon(Icons.save)),
                 ],
               ),
-            )),
+            ))),
         drawer: MenuLateral());
   }
 }
