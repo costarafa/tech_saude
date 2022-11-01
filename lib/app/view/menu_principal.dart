@@ -32,8 +32,9 @@ class _MenuDoisState extends State<MenuPrincipal> {
           ),
           body: Padding(
               padding: const EdgeInsets.all(20),
-              child: Center(
-                child: Column(
+              child: SingleChildScrollView(
+                child: Center(
+                  child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
@@ -90,7 +91,8 @@ class _MenuDoisState extends State<MenuPrincipal> {
                   ],
                 ),
               )),
-          drawer: MenuLateral());
+
+          ));
     });
   }
 }

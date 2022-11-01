@@ -41,7 +41,6 @@ class _ListarPressaoState extends State<ListarPressao> {
         body:
         GridView.count(
           crossAxisCount: (orientation == Orientation.portrait) ? 1 : 2,
-          childAspectRatio: (1 / .4),
           children: [
             FutureBuilder(
                 future: pressaoArterialDAO.listarTodos(),
@@ -64,7 +63,8 @@ class _ListarPressaoState extends State<ListarPressao> {
                           itemBuilder: (context, contador)
                   {
                     var pressao = lista[contador];
-                    return ListTile(
+                    return SizedBox(
+                      child: ListTile(
                       title: Text(pressao.valorPressaoArterial),
                       trailing: SizedBox(
                         width: 300,
@@ -101,6 +101,8 @@ class _ListarPressaoState extends State<ListarPressao> {
                                                           .toString()));
                                                 });
                                                 Navigator.pop(context);
+                                                pressaoArterialDAO.excluir(int.parse(pressao.id.toString()));
+                                                Navigator.pushNamed(context, '/listarPressao');
                                               },
                                             ),
                                             ElevatedButton(
@@ -116,6 +118,7 @@ class _ListarPressaoState extends State<ListarPressao> {
                           ],
                         ),
                       ),
+                    )
                     );
                   })),
                             Text(

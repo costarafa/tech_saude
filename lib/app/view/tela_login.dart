@@ -17,12 +17,17 @@ class _MenuDoisState extends State<TelaLogin> {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown]);
     return Scaffold(
+      resizeToAvoidBottomInset: true,
         body: Padding(
             padding: const EdgeInsets.all(20),
-            child: Center(
-              child: Column(
+            child: SingleChildScrollView(
+              child: Center(
+                child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  SizedBox(
+                    height: 40,
+                  ),
                   Text(
                     "Bem vindo!",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
@@ -51,7 +56,7 @@ class _MenuDoisState extends State<TelaLogin> {
                       color: Colors.green,
                       icon: Icon(Icons.home)),
                   SizedBox(
-                    height: 150,
+                    height: 100,
                   ),
                   Text(
                     "Não possui conta?     ",
@@ -64,6 +69,7 @@ class _MenuDoisState extends State<TelaLogin> {
                   ),
                 ],
               ),
+              )
             )),
         drawer: MenuLateral());
   }
