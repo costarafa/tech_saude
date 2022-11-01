@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:saude_tech/app/view/componentes/botao.dart';
 import 'package:saude_tech/app/view/componentes/cartao_generico.dart';
 import 'package:saude_tech/app/view/componentes/menuLateral.dart';
@@ -13,6 +14,7 @@ class MenuPrincipal extends StatefulWidget {
 class _MenuDoisState extends State<MenuPrincipal> {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown]);
     return Scaffold(
         appBar: AppBar(
           title: Text("Tech Saúde"),
@@ -57,7 +59,7 @@ class _MenuDoisState extends State<MenuPrincipal> {
                   Botao(
                       descricao: 'Pressão Arterial',
                       function: () {
-                        Navigator.pushNamed(context, '/');
+                        Navigator.pushNamed(context, '/listarPressao');
                       },
                       color: Colors.black54,
                       icon: Icon(Icons.add_chart_sharp)),

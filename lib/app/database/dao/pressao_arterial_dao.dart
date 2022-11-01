@@ -35,13 +35,17 @@ class PressaoArterialDAO extends StatelessWidget {
       const sql = 'SELECT * FROM pressaoArterial';
       database = await Conexao.abrirConexao();
       List<Map<String, Object>> resultado = (await database.rawQuery(sql));
-      if (resultado.isEmpty) throw Exception('Sem registros');
-      List<PressaoArterial> pressoesArteriais = resultado.map((linha) {
-        return PressaoArterial(
-            id: linha['id'] as int,
-            valorPressaoArterial: linha['valorPressaoArterial']);
-      }).toList();
-      return pressoesArteriais;
+      if (resultado.isEmpty) {
+        return null;
+      } else {
+        List<PressaoArterial> pressoesArteriais = resultado.map((linha) {
+          return PressaoArterial(
+              id: linha['id'] as int,
+              valorPressaoArterial: linha['valorPressaoArterial']);
+        }).toList();
+        database.close();
+        return pressoesArteriais;
+      }
     } catch (e) {
       throw Exception('Error ao listar valores de pressão arterial');
     } finally {

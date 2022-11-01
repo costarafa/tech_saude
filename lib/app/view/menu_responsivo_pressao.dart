@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:saude_tech/app/view/componentes/cartao_generico.dart';
 
-class MenuResponsivoGlicemia extends StatefulWidget {
-  const MenuResponsivoGlicemia({Key key}) : super(key: key);
+class MenuResponsivoPressao extends StatefulWidget {
+  const MenuResponsivoPressao({Key key}) : super(key: key);
 
   @override
-  State<MenuResponsivoGlicemia> createState() => _MenuResponsivoGlicemiaState();
+  State<MenuResponsivoPressao> createState() => _MenuResponsivoPressaoState();
 }
 
-class _MenuResponsivoGlicemiaState extends State<MenuResponsivoGlicemia> {
+class _MenuResponsivoPressaoState extends State<MenuResponsivoPressao> {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]);
+
     return OrientationBuilder(builder: (context, orientation) {
       return Scaffold(
         appBar: AppBar(
           title: Text("Tech Saúde"),
           backgroundColor: Colors.green,
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () {
+                Navigator.pushNamed(context, '/menuLateral');
+              },
+            )
+          ],
           leading: GestureDetector(
             onTap: () {
               Navigator.pushNamed(context, '/menuLateral');
@@ -27,12 +34,11 @@ class _MenuResponsivoGlicemiaState extends State<MenuResponsivoGlicemia> {
             ),
           ),
         ),
-        body: 
-        GridView.count(
+        body: GridView.count(
           crossAxisCount: (orientation == Orientation.portrait) ? 2 : 3,
           childAspectRatio: (1 / .4),
           children: [
-            Text("Glicemia"),
+            Text("Pressão Arterial"),
             SizedBox(
               height: 20,
             ),

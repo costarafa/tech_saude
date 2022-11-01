@@ -43,7 +43,9 @@ final criarBanco = [
       ,valorPressaoArterial VARCHAR(200) NOT NULL
     )
     """,
-  """
-    INSERT INTO pressaoArterial(valorPressaoarterial) VALUES ('135')
-    """,
+  '''
+    INSERT INTO pressaoArterial(id, valorPressaoarterial) VALUES (1, '135')''',
+    '''INSERT INTO pressaoArterial(id, valorPressaoarterial) VALUES (2, '140')''',
+    '''INSERT INTO pressaoArterial(id, valorPressaoarterial) VALUES (3, '150')'''
+    
 ];
