@@ -16,6 +16,7 @@ class GlicemiaDAO extends StatelessWidget {
     Database db = await Conexao.abrirConexao();
     const sql = 'INSERT INTO glicemia (valorGlicemia) VALUES (?)';
     var linhasAfetadas = await db.rawInsert(sql, [glicemia.valorGlicemia]);
+    db.close();
     return linhasAfetadas > 0;
   }
 
@@ -23,6 +24,7 @@ class GlicemiaDAO extends StatelessWidget {
     const sql = 'UPDATE glicemia SET valorGlicemia=? WHERE id = ?';
     Database db = await Conexao.abrirConexao();
     var linhasAfetadas = await db.rawUpdate(sql, [glicemia.valorGlicemia]);
+    db.close();
     return linhasAfetadas > 0;
   }
 
@@ -32,12 +34,17 @@ class GlicemiaDAO extends StatelessWidget {
       const sql = 'SELECT * FROM glicemia';
       database = await Conexao.abrirConexao();
       List<Map<String, Object>> resultado = (await database.rawQuery(sql));
-      if (resultado.isEmpty) throw Exception('Sem registros');
-      List<Glicemia> glicemias = resultado.map((linha) {
-        return Glicemia(
-            id: linha['id'] as int, valorGlicemia: linha['valorGlicemia']);
-      }).toList();
-      return glicemias;
+      if (resultado.isEmpty) {
+        return null;
+      }else{
+        List<Glicemia> glicemias = resultado.map((linha) {
+          return Glicemia(
+              id: linha['id'] as int,
+              valorGlicemia: linha['valorGlicemia']);
+        }).toList();
+        database.close();
+        return glicemias;
+      }
     } catch (e) {
       throw Exception('Error ao listar valores de glicemia');
     } finally {
@@ -51,6 +58,7 @@ class GlicemiaDAO extends StatelessWidget {
       const sql = 'DELETE FROM glicemia WHERE id = ?';
       db = await Conexao.abrirConexao();
       int linhasAfetadas = await db.rawDelete(sql, [id]);
+      db.close();
       return linhasAfetadas > 0;
     } catch (e) {
       throw Exception('Erro ao excluir');

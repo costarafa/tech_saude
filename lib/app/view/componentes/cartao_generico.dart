@@ -14,9 +14,9 @@ class CartaoGenerico extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
         child: ListTile(
-      title: title,
-      subtitle: subtitle,
-      trailing: PainelGenerico(funcao: funcao,),
+        title: title,
+        subtitle: subtitle,
+        trailing: PainelGenerico(funcao: funcao,),
     ));
   }
 }

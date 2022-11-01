@@ -36,7 +36,9 @@ dependencies:
   sqflite_common_ffi: ^2.1.0+2
   get_it:
   cached_network_image :
-  url_launcher: ^6.1.5
+  url_launcher:
+  firebase_auth: ^2.0.0
+  firebase_core: ^1.24.0
 
 dev_dependencies:
   flutter_test:

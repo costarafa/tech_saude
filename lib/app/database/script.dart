@@ -34,9 +34,12 @@ final criarBanco = [
       ,valorGlicemia VARCHAR(200) NOT NULL
     )
     """,
-  """
-    INSERT INTO glicemia(valorGlicemia) VALUES ('150')
-    """,
+  ''' INSERT INTO glicemia(id, valorGlicemia) VALUES (1, '150') ''',
+  ''' INSERT INTO glicemia(id, valorGlicemia) VALUES (2, '130') ''',
+  ''' INSERT INTO glicemia(id, valorGlicemia) VALUES (3, '140') ''',
+  ''' INSERT INTO glicemia(id, valorGlicemia) VALUES (4, '150') ''',
+  ''' INSERT INTO glicemia(id, valorGlicemia) VALUES (5, '130') ''',
+  ''' INSERT INTO glicemia(id, valorGlicemia) VALUES (6, '140') ''',
   """
     CREATE TABLE pressaoArterial(
       id INTEGER NOT NULL PRIMARY KEY
@@ -46,6 +49,10 @@ final criarBanco = [
   '''
     INSERT INTO pressaoArterial(id, valorPressaoarterial) VALUES (1, '135')''',
     '''INSERT INTO pressaoArterial(id, valorPressaoarterial) VALUES (2, '140')''',
-    '''INSERT INTO pressaoArterial(id, valorPressaoarterial) VALUES (3, '150')'''
+    '''INSERT INTO pressaoArterial(id, valorPressaoarterial) VALUES (3, '150')''',
+  '''
+    INSERT INTO pressaoArterial(id, valorPressaoarterial) VALUES (4, '135')''',
+  '''INSERT INTO pressaoArterial(id, valorPressaoarterial) VALUES (5, '140')''',
+  '''INSERT INTO pressaoArterial(id, valorPressaoarterial) VALUES (6, '150')'''
     
 ];

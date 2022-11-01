@@ -17,6 +17,7 @@ class PressaoArterialDAO extends StatelessWidget {
     const sql = 'INSERT INTO pressaoArterial (valorPressaoArterial) VALUES (?)';
     var linhasAfetadas =
         await db.rawInsert(sql, [pressaoArterial.valorPressaoArterial]);
+    db.close();
     return linhasAfetadas > 0;
   }
 
@@ -26,6 +27,7 @@ class PressaoArterialDAO extends StatelessWidget {
     Database db = await Conexao.abrirConexao();
     var linhasAfetadas = await db.rawUpdate(
         sql, [pressaoArterial.valorPressaoArterial, pressaoArterial.id]);
+    db.close();
     return linhasAfetadas > 0;
   }
 
@@ -59,6 +61,7 @@ class PressaoArterialDAO extends StatelessWidget {
       const sql = 'DELETE FROM pressaoArterial WHERE id = ?';
       db = await Conexao.abrirConexao();
       int linhasAfetadas = await db.rawDelete(sql, [id]);
+      db.close();
       return linhasAfetadas > 0;
     } catch (e) {
       throw Exception('Erro ao excluir');

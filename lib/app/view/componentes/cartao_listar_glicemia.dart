@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:saude_tech/app/database/dao/glicemia_dao.dart';
 import 'package:saude_tech/app/database/dao/pressao_arterial_dao.dart';
+import 'package:saude_tech/app/domain/entities/glicemia.dart';
 import 'package:saude_tech/app/domain/entities/pressao_arterial.dart';
 import 'package:saude_tech/app/my_app.dart';
 
-class ListarPressao extends StatefulWidget {
-  const ListarPressao({Key key}) : super(key: key);
+class ListarGlicemia extends StatefulWidget {
+  const ListarGlicemia({Key key}) : super(key: key);
 
   @override
-  State<ListarPressao> createState() =>
-      _ListarPressaoState();
+  State<ListarGlicemia> createState() =>
+      _ListarGlicemiaState();
 }
 // ignore: must_be_immutable
-class _ListarPressaoState extends State<ListarPressao> {
-  PressaoArterialDAO pressaoArterialDAO = new PressaoArterialDAO();
+class _ListarGlicemiaState extends State<ListarGlicemia> {
+GlicemiaDAO glicemiaDAO = new GlicemiaDAO();
 
   @override
   Widget build(BuildContext context) {
     return OrientationBuilder(builder: (context, orientation) {
-      return Scaffold(
+        return Scaffold(
         appBar: AppBar(
           title: Text("Tech Saúde"),
           backgroundColor: Colors.green,
@@ -25,7 +27,7 @@ class _ListarPressaoState extends State<ListarPressao> {
             IconButton(
               icon: Icon(Icons.add),
               onPressed: () {
-                Navigator.pushNamed(context, '/cadastrarPressao');
+                Navigator.pushNamed(context, '/cadastrarGlicemia');
               },
             )
           ],
@@ -38,37 +40,25 @@ class _ListarPressaoState extends State<ListarPressao> {
             ),
           ),
         ),
-        body:
-        GridView.count(
+    body:  
+    GridView.count(
           crossAxisCount: (orientation == Orientation.portrait) ? 1 : 2,
           childAspectRatio: (1 / .4),
           children: [
-            FutureBuilder(
-                future: pressaoArterialDAO.listarTodos(),
-                builder:
-                    (context, AsyncSnapshot<List<PressaoArterial>> snapshot) {
-                  if (!snapshot.hasData)
-                    return const CircularProgressIndicator();
-                  var lista = snapshot.data;
-                  return
-                    Scaffold(
-                      resizeToAvoidBottomInset: true,
-                      body: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                      SizedBox(
-                      height: 300,
-                      child: ListView.builder(
-                          itemCount: lista.length,
-                          scrollDirection: Axis.vertical,
-                          itemBuilder: (context, contador)
-                  {
-                    var pressao = lista[contador];
+    FutureBuilder(
+            future: glicemiaDAO.listarTodos(),
+            builder:
+                (context, AsyncSnapshot<List<Glicemia>> snapshot) {
+              if (!snapshot.hasData) return const CircularProgressIndicator();
+              var lista = snapshot.data;
+              return ListView.builder(
+                  itemCount: lista.length,
+                  itemBuilder: (context, contador) {
+                    var glicemia = lista[contador];
                     return ListTile(
-                      title: Text(pressao.valorPressaoArterial),
+                      title: Text(glicemia.valorGlicemia),
                       trailing: SizedBox(
-                        width: 300,
-                        height: 100,
+                        width: 100,
                         child: Row(
                           children: [
                             IconButton(
@@ -76,7 +66,7 @@ class _ListarPressaoState extends State<ListarPressao> {
                               color: Colors.black38,
                               onPressed: () {
                                 Navigator.pushNamed(context, '/editpressao',
-                                    arguments: pressao)
+                                        arguments: glicemia)
                                     .then((value) {
                                   setState(() {});
                                 });
@@ -96,9 +86,7 @@ class _ListarPressaoState extends State<ListarPressao> {
                                               child: const Text("Sim"),
                                               onPressed: () {
                                                 setState(() {
-                                                  pressaoArterialDAO.excluir(
-                                                      int.parse(pressao.id
-                                                          .toString()));
+                                                glicemiaDAO.excluir(int.parse(glicemia.id.toString()));
                                                 });
                                                 Navigator.pop(context);
                                               },
@@ -117,20 +105,15 @@ class _ListarPressaoState extends State<ListarPressao> {
                         ),
                       ),
                     );
-                  })),
-                            Text(
-                              "Olá Adrieli",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 40),
-                            ),
-                          ]
-                      )
-                    );
-                }
+                  });
+            }
             )
-          ],
+],
         ),
       );
     });
+          
+          
+          
   }
 }
