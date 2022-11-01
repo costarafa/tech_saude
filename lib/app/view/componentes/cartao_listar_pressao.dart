@@ -12,12 +12,12 @@ class ListarPressao extends StatefulWidget {
 }
 // ignore: must_be_immutable
 class _ListarPressaoState extends State<ListarPressao> {
-PressaoArterialDAO pressaoArterialDAO = new PressaoArterialDAO();
+  PressaoArterialDAO pressaoArterialDAO = new PressaoArterialDAO();
 
   @override
   Widget build(BuildContext context) {
     return OrientationBuilder(builder: (context, orientation) {
-        return Scaffold(
+      return Scaffold(
         appBar: AppBar(
           title: Text("Tech Saúde"),
           backgroundColor: Colors.green,
@@ -38,25 +38,37 @@ PressaoArterialDAO pressaoArterialDAO = new PressaoArterialDAO();
             ),
           ),
         ),
-    body:  
-    GridView.count(
+        body:
+        GridView.count(
           crossAxisCount: (orientation == Orientation.portrait) ? 1 : 2,
           children: [
-    FutureBuilder(
-            future: pressaoArterialDAO.listarTodos(),
-            builder:
-                (context, AsyncSnapshot<List<PressaoArterial>> snapshot) {
-              if (!snapshot.hasData) return const CircularProgressIndicator();
-              var lista = snapshot.data;
-              return ListView.builder(
-                  itemCount: lista.length,
-                  itemBuilder: (context, contador) {
+            FutureBuilder(
+                future: pressaoArterialDAO.listarTodos(),
+                builder:
+                    (context, AsyncSnapshot<List<PressaoArterial>> snapshot) {
+                  if (!snapshot.hasData)
+                    return const CircularProgressIndicator();
+                  var lista = snapshot.data;
+                  return
+                    Scaffold(
+                      resizeToAvoidBottomInset: true,
+                      body: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                      SizedBox(
+                      height: 300,
+                      child: ListView.builder(
+                          itemCount: lista.length,
+                          scrollDirection: Axis.vertical,
+                          itemBuilder: (context, contador)
+                  {
                     var pressao = lista[contador];
                     return SizedBox(
                       child: ListTile(
                       title: Text(pressao.valorPressaoArterial),
                       trailing: SizedBox(
-                        width: 100,
+                        width: 300,
+                        height: 100,
                         child: Row(
                           children: [
                             IconButton(
@@ -64,7 +76,7 @@ PressaoArterialDAO pressaoArterialDAO = new PressaoArterialDAO();
                               color: Colors.black38,
                               onPressed: () {
                                 Navigator.pushNamed(context, '/editpressao',
-                                        arguments: pressao)
+                                    arguments: pressao)
                                     .then((value) {
                                   setState(() {});
                                 });
@@ -85,6 +97,12 @@ PressaoArterialDAO pressaoArterialDAO = new PressaoArterialDAO();
                                               onPressed: () {
                                                 pressaoArterialDAO.excluir(int.parse(pressao.id.toString()));
                                                 Navigator.pushNamed(context, '/listarPressao');
+                                                setState(() {
+                                                  pressaoArterialDAO.excluir(
+                                                      int.parse(pressao.id
+                                                          .toString()));
+                                                });
+                                                Navigator.pop(context);
                                               },
                                             ),
                                             ElevatedButton(
@@ -102,15 +120,20 @@ PressaoArterialDAO pressaoArterialDAO = new PressaoArterialDAO();
                       ),
                     )
                     );
-                  });
-            }
+                  })),
+                            Text(
+                              "Olá Adrieli",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 40),
+                            ),
+                          ]
+                      )
+                    );
+                }
             )
-],
+          ],
         ),
       );
     });
-          
-          
-          
   }
 }
