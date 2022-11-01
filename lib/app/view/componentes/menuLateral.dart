@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:saude_tech/app/view/componentes/cartao_email.dart';
-import 'package:saude_tech/app/view/componentes/cartao_nome.dart';
-import 'package:saude_tech/app/view/componentes/meu_avatar.dart';
 
 class MenuLateral extends StatelessWidget {
   @override
@@ -10,15 +7,18 @@ class MenuLateral extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          MeuAvatar(),
-          SizedBox(
-            height: 20,
-          ),
-          CartaoNome(),
-          SizedBox(
-            height: 20,
-          ),
-          CartaoEmail(),
+          UserAccountsDrawerHeader(
+           accountName: Text("Adrieli"),
+           accountEmail: Text("adrieli@gmail.com.com"),
+           currentAccountPicture: CircleAvatar(
+             backgroundColor:
+             Theme.of(context).platform == TargetPlatform.iOS
+                   ? Colors.green: Colors.white,
+               child: Text("M", style: 
+                    TextStyle(fontSize: 40.0),
+                  ),
+                ),
+              ),
           ListTile(
             leading: Icon(Icons.escalator_warning_outlined),
             title: Text('Família'),
@@ -39,7 +39,6 @@ class MenuLateral extends StatelessWidget {
             title: Text('Sair'),
             onTap: () => {Navigator.pop(context)},
           ),
-          
         ],
       ),
     );
