@@ -5,7 +5,7 @@ import 'package:saude_tech/app/domain/entities/usuario.dart';
 import 'package:saude_tech/app/view/componentes/botao.dart';
 import 'package:saude_tech/app/view/componentes/cartao_generico.dart';
 import 'package:saude_tech/app/view/componentes/input.dart';
-import 'package:saude_tech/app/view/menuLateral.dart';
+import 'package:saude_tech/app/view/menu_lateral.dart';
 
 class TelaCadastro extends StatefulWidget {
   const TelaCadastro({Key key}) : super(key: key);

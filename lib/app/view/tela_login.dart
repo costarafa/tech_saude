@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:saude_tech/app/services/validatorService.dart';
 import 'package:saude_tech/app/view/componentes/botao.dart';
 import 'package:saude_tech/app/view/componentes/input.dart';
-import 'package:saude_tech/app/view/menuLateral.dart';
+import 'package:saude_tech/app/view/menu_lateral.dart';
 
 class TelaLogin extends StatefulWidget {
   const TelaLogin({Key key}) : super(key: key);
@@ -96,10 +96,10 @@ class _MenuDoisState extends State<TelaLogin> {
                   Botao(
                       descricao: 'Entrar',
                       function: () {
-                        if (email != null && email.length == 0) {
+                        if (email == null) {
                           mensagem = "Informe o Email";
                         }
-                        else if (senha != null && senha.length == 0) {
+                        else if (senha == null) {
                           mensagem = "Informe a senha";
                         } else if (mensagem == null){
                           mensagem = "Bem vindo!";

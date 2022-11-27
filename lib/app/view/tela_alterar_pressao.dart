@@ -4,7 +4,7 @@ import 'package:saude_tech/app/database/dao/pressao_arterial_dao.dart';
 import 'package:saude_tech/app/domain/entities/pressao_arterial.dart';
 import 'package:saude_tech/app/view/componentes/botao.dart';
 import 'package:saude_tech/app/view/componentes/input.dart';
-import 'package:saude_tech/app/view/menuLateral.dart';
+import 'package:saude_tech/app/view/menu_lateral.dart';
 
 class AlterarPressao extends StatefulWidget {
   const AlterarPressao({Key key}) : super(key: key);

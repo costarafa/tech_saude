@@ -4,7 +4,7 @@ import 'package:saude_tech/app/database/dao/glicemia_dao.dart';
 import 'package:saude_tech/app/domain/entities/glicemia.dart';
 import 'package:saude_tech/app/view/componentes/botao.dart';
 import 'package:saude_tech/app/view/componentes/input.dart';
-import 'package:saude_tech/app/view/menuLateral.dart';
+import 'package:saude_tech/app/view/menu_lateral.dart';
 
 class SalvarGlicemia extends StatefulWidget {
   const SalvarGlicemia({Key key}) : super(key: key);
@@ -13,6 +13,7 @@ class SalvarGlicemia extends StatefulWidget {
 }
 dynamic id;
 String valor;
+int valorGlicemia;
 class _SalvarGlicemiaState extends State<SalvarGlicemia> {
   GlicemiaDAO glicemiaDAO = new GlicemiaDAO();
 
@@ -59,7 +60,16 @@ class _SalvarGlicemiaState extends State<SalvarGlicemia> {
                       descricao: 'Salvar',
                       function: () {
                         glicemiaDAO.salvar(Glicemia(valorGlicemia: valor));
-                        Navigator.pushNamed(context, '/listarGlicemia');
+                        valorGlicemia = int.parse(valor);
+                        if(valorGlicemia <= 70) {
+                          Navigator.pushNamed(context, '/glicemiaBaixa');
+                        } else if(valorGlicemia <= 99) {
+                          Navigator.pushNamed(context, '/glicemiaNormal');
+                        } else if(valorGlicemia >= 100) {
+                          Navigator.pushNamed(context, '/glicemiaAlta');
+                        } else {
+                          Navigator.pushNamed(context, '/listarGlicemia');
+                        }
                       },
                       color: Colors.green,
                       icon: Icon(Icons.save)),
