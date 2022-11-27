@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:saude_tech/app/database/sqlite/connection.dart';
 import 'package:saude_tech/app/domain/entities/usuario.dart';

@@ -19,7 +19,7 @@ GlicemiaDAO glicemiaDAO = new GlicemiaDAO();
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]);
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown]);
     return OrientationBuilder(builder: (context, orientation) {
         return Scaffold(
         appBar: AppBar(

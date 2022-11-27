@@ -7,6 +7,10 @@ class CamposForm extends StatelessWidget {
   ValueChanged<String> vincularValor;
   String valorInicial;
   TextInputType teclado;
+  TextEditingController controller;
+  bool obscure;
+  FormFieldValidator<String> validador;
+  FormFieldSetter<String> save;
 
   CamposForm(
       {Key key,
@@ -14,7 +18,11 @@ class CamposForm extends StatelessWidget {
        this.dica,
        this.vincularValor,
        this.valorInicial,
-       this.teclado})
+       this.teclado,
+        this.controller,
+        this.obscure,
+        this.validador,
+        this.save})
       : super(key: key);
 
   @override
@@ -27,6 +35,9 @@ class CamposForm extends StatelessWidget {
           initialValue: valorInicial,
           keyboardAppearance: Brightness.dark,
           keyboardType: teclado,
+          controller: controller,
+          validator: validador,
+          onSaved: save,
         ));
   }
 }

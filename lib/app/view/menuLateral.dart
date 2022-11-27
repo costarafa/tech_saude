@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:saude_tech/app/view/componentes/cartao_email.dart';
 import 'package:saude_tech/app/view/componentes/cartao_nome.dart';
@@ -6,6 +7,7 @@ import 'package:saude_tech/app/view/componentes/meu_avatar.dart';
 class MenuLateral extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -18,7 +20,7 @@ class MenuLateral extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          CartaoEmail(),
+          CartaoEmail(email: user.email,),
           ListTile(
             leading: Icon(Icons.home),
             title: Text('Home'),
@@ -42,7 +44,10 @@ class MenuLateral extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('Sair'),
-            onTap: () => { Navigator.pushNamed(context, '/login')},
+            onTap: () {
+              FirebaseAuth.instance.signOut();
+              Navigator.pushNamed(context, '/login');
+              },
           ),
           
         ],

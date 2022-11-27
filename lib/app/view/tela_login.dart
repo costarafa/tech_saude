@@ -1,7 +1,10 @@
+import 'dart:ffi';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:saude_tech/app/services/validatorService.dart';
 import 'package:saude_tech/app/view/componentes/botao.dart';
-import 'package:saude_tech/app/view/componentes/cartao_generico.dart';
 import 'package:saude_tech/app/view/componentes/input.dart';
 import 'package:saude_tech/app/view/menuLateral.dart';
 
@@ -13,16 +16,30 @@ class TelaLogin extends StatefulWidget {
 }
 
 class _MenuDoisState extends State<TelaLogin> {
+  final emailController = TextEditingController();
+  final senhaController = TextEditingController();
+  Validator validator;
+  String mensagem;
+  String email;
+  String senha;
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    senhaController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown]);
     return Scaffold(
-      resizeToAvoidBottomInset: true,
+        resizeToAvoidBottomInset: true,
         body: Padding(
             padding: const EdgeInsets.all(20),
             child: SingleChildScrollView(
-              child: Center(
-                child: Column(
+                child: Center(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
@@ -40,18 +57,57 @@ class _MenuDoisState extends State<TelaLogin> {
                     height: 40,
                   ),
                   CamposForm(
-                      dica: "", rotulo: "Email", valorInicial: "", teclado: TextInputType.emailAddress),
+                      dica: "",
+                      rotulo: "Email",
+                      teclado: TextInputType.emailAddress,
+                      vincularValor: (text) {
+                        email = text;
+                        String pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                        RegExp regExp = new RegExp(pattern);
+                        if(email != null && !regExp.hasMatch(email)){
+                          mensagem = "Email inválido";
+                        }else {
+                          return null;
+                        }
+                      },
+                      controller: emailController),
                   SizedBox(
                     height: 15,
                   ),
-                  CamposForm(dica: "", rotulo: "Senha", valorInicial: "", teclado: TextInputType.visiblePassword),
+                  CamposForm(
+                      dica: "",
+                      rotulo: "Senha",
+                      teclado: TextInputType.visiblePassword,
+                      controller: senhaController,
+                      vincularValor: (text) {
+                        senha = text;
+                        String pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                        RegExp regExp = new RegExp(pattern);
+                        if(senha != null && !regExp.hasMatch(senha)){
+                          mensagem = "Senha inválida";
+                        }else {
+                          return null;
+                        }
+                      } ,
+                  ),
                   SizedBox(
                     height: 30,
                   ),
                   Botao(
                       descricao: 'Entrar',
                       function: () {
-                        Navigator.pushNamed(context, '/');
+                        if (email != null && email.length == 0) {
+                          mensagem = "Informe o Email";
+                        }
+                        else if (senha != null && senha.length == 0) {
+                          mensagem = "Informe a senha";
+                        } else if (mensagem == null){
+                          mensagem = "Bem vindo!";
+                        }
+                        singIn();
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: Text(mensagem),
+                        ));
                       },
                       color: Colors.green,
                       icon: Icon(Icons.home)),
@@ -64,13 +120,30 @@ class _MenuDoisState extends State<TelaLogin> {
                     textAlign: TextAlign.left,
                   ),
                   ListTile(
-                    title: Text('Cadastre-se', textAlign: TextAlign.center,),
-                    onTap: () => {Navigator.pushNamed(context, '/cadastro')}
-                  ),
+                      title: Text(
+                        'Cadastre-se',
+                        textAlign: TextAlign.center,
+                      ),
+                      onTap: () => {Navigator.pushNamed(context, '/cadastro')}),
                 ],
               ),
-              )
-            )),
+            ))),
         drawer: MenuLateral());
+  }
+
+  Future singIn() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: senhaController.text.trim());
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        return "Nenhum usuário encontrado para esse e-mail.";
+      } else if (e.code == 'wrong-password') {
+        return "Senha incorreta.";
+      } else {
+        return "Algo está errado! Tente novamente.";
+      }
+    }
   }
 }

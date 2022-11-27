@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:saude_tech/app/view/componentes/botao.dart';
 import 'package:saude_tech/app/view/componentes/cartao_generico.dart';
-import 'package:saude_tech/app/view/menuLateral.dart';
 
 class MenuPrincipal extends StatefulWidget {
   const MenuPrincipal({Key key}) : super(key: key);
