@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:saude_tech/app/view/componentes/cartao_email.dart';
 import 'package:saude_tech/app/view/componentes/cartao_nome.dart';
