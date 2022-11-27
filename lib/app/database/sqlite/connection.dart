@@ -8,7 +8,7 @@ class Conexao {
   static Database _db;
   static Future<Database> abrirConexao() async {
     if (_db == null || _db.isOpen == false ) {
-      var path = join(await getDatabasesPath(), 'banco.db');
+      var path = join(await getDatabasesPath(), 'banco5.db');
       _db = await openDatabase(
         path,
         version: 1,

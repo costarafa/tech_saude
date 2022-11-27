@@ -5,14 +5,15 @@ import 'package:saude_tech/app/view/componentes/painel_email.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CartaoEmail extends StatelessWidget {
-  const CartaoEmail({Key key}) : super(key: key);
+  String email;
+   CartaoEmail({Key key, this.email}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
           title: const Text('E-mail'),
-          subtitle: const Text('adrieli@gmail.com'),
+          subtitle: Text(email),
           trailing: PainelEmail(
             funcaoEmail: chamarEmail
           )),
@@ -22,9 +23,9 @@ class CartaoEmail extends StatelessWidget {
   chamarEmail() {
     GlicemiaDAO glicemiaDAO = new GlicemiaDAO();
     Glicemia glicemia = new Glicemia();
-    String email = 'adrieli@gmail.com';
+    String email = 'adrielikethin.dossantos@gmail.com';
     String subject = 'Relatório de glicemia';
-    String body = 'Relatório mensal de glicemia' + glicemia.valorGlicemia;
+    String body = 'Relatório mensal de glicemia ' + glicemiaDAO.listarTodos().toString();
 
     String emailUrl = "mailto:$email?subject=$subject&body=$body";
 

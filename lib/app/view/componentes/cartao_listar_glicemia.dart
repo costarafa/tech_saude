@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:saude_tech/app/database/dao/glicemia_dao.dart';
 import 'package:saude_tech/app/database/dao/pressao_arterial_dao.dart';
 import 'package:saude_tech/app/domain/entities/glicemia.dart';
@@ -18,6 +19,7 @@ GlicemiaDAO glicemiaDAO = new GlicemiaDAO();
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown]);
     return OrientationBuilder(builder: (context, orientation) {
         return Scaffold(
         appBar: AppBar(
@@ -86,9 +88,9 @@ GlicemiaDAO glicemiaDAO = new GlicemiaDAO();
                                               onPressed: () {
                                                 setState(() {
                                                 glicemiaDAO.excluir(int.parse(glicemia.id.toString()));
+                                                Navigator.pushNamed(context, '/listarGlicemia');
                                                 });
                                                 Navigator.pop(context);
-                                                Navigator.pushNamed(context, '/listarGlicemia');
                                               },
                                             ),
                                             ElevatedButton(
