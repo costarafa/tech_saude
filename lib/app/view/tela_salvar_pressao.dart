@@ -13,6 +13,7 @@ class SalvarPressao extends StatefulWidget {
 }
 dynamic id;
 String valor;
+int valorPressaoArterial;
 class _SalvarPressaoState extends State<SalvarPressao> {
   PressaoArterialDAO pressaoArterialDAO = new PressaoArterialDAO();
 
@@ -59,7 +60,16 @@ class _SalvarPressaoState extends State<SalvarPressao> {
                       descricao: 'Salvar',
                       function: () {
                         pressaoArterialDAO.salvar(PressaoArterial(valorPressaoArterial: valor));
-                        Navigator.pushNamed(context, '/listarPressao');
+                        valorPressaoArterial = int.parse(valor);
+                        if(valorPressaoArterial <= 70) {
+                          Navigator.pushNamed(context, '/glicemiaBaixa');
+                        } else if(valorPressaoArterial <= 99) {
+                          Navigator.pushNamed(context, '/glicemiaNormal');
+                        } else if(valorPressaoArterial >= 100) {
+                          Navigator.pushNamed(context, '/glicemiaAlta');
+                        } else {
+                          Navigator.pushNamed(context, '/listarGlicemia');
+                        }
                       },
                       color: Colors.green,
                       icon: Icon(Icons.save)),

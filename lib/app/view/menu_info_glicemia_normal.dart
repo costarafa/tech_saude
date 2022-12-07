@@ -45,8 +45,18 @@ class _MenuMenuGlicemiaNormal extends State<MenuGlicemiaNormal> {
                       "Sua glicemia está normal!",
                       style: TextStyle(fontSize: 25),
                     ),
+                    Text(
+                      "Continue com os seus cuidados e não deixe de consultar o médico regularmente!",
+                      style: TextStyle(fontSize: 20), textAlign: TextAlign.center,
+                    ),
                     SizedBox(
                       height: 20,
+                    ),
+                    SizedBox(
+                      child: Image.asset('assets/dicas-diabetes.png', width: 400, height: 500),
+                    ),
+                    SizedBox(
+                      child: Image.asset('assets/dicas-prevenir-diabetes.png', width: 400, height: 400),
                     ),
                   ],
                 ),

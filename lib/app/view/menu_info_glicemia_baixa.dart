@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:saude_tech/app/view/componentes/botao.dart';
-import 'package:saude_tech/app/view/componentes/cartao_generico.dart';
 
 class MenuGlicemiaBaixa extends StatefulWidget {
   const MenuGlicemiaBaixa({Key key}) : super(key: key);
@@ -45,8 +43,18 @@ class _MenuMenuGlicemiaBaixa extends State<MenuGlicemiaBaixa> {
                       "Sua glicemia está baixa!",
                       style: TextStyle(fontSize: 25),
                     ),
+                    Text(
+                      "Não esqueça de consultar um médico e seguir suas orientações. Sintomas:",
+                      style: TextStyle(fontSize: 20), textAlign: TextAlign.center,
+                    ),
                     SizedBox(
                       height: 20,
+                    ),
+                    SizedBox(
+                      child: Image.asset('assets/sintomas-hipo.png', width: 400, height: 400),
+                    ),
+                    SizedBox(
+                      child: Image.asset('assets/dicas-hipoglicemia.png', width: 400, height: 300),
                     ),
                   ],
                 ),

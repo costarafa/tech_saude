@@ -87,6 +87,7 @@ class _MenuDoisState extends State<TelaCadastro> {
                   CamposForm(
                       dica: "",
                       rotulo: "Senha",
+                      obscure: true,
                       valorInicial: "",
                       vincularValor: (value) =>
                       senha = value,

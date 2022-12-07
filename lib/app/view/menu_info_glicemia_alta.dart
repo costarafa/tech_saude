@@ -45,8 +45,18 @@ class _MenuMenuGlicemiaAlta extends State<MenuGlicemiaAlta> {
                       "Sua glicemia está alta",
                       style: TextStyle(fontSize: 25),
                     ),
+                    Text(
+                      "Siga as orientações médicas para controlar. Em caso de mal estar recorrente procure um médico. Sintomas:",
+                      style: TextStyle(fontSize: 20), textAlign: TextAlign.center,
+                    ),
                     SizedBox(
                       height: 20,
+                    ),
+                    SizedBox(
+                      child: Image.asset('assets/sintomas-hiper.png', width: 400, height: 400),
+                    ),
+                    SizedBox(
+                      child: Image.asset('assets/dicas-hiperglicemia.png', width: 400, height: 500),
                     ),
                   ],
                 ),

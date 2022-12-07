@@ -72,7 +72,15 @@ class _SalvarGlicemiaState extends State<SalvarGlicemia> {
                         }
                       },
                       color: Colors.green,
-                      icon: Icon(Icons.save)),
+                      icon: Icon(Icons.save)
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    "OBS: Se você for diabético (a) a recomendação dada pela Sociedade Brasileira de Diabetes é que seja feita 2h depois da refeição, para que seja utilizada como parâmetro de controle. Se não for, continua sendo recomendada 2h, pois antes disso pode haver interferência da dieta nos valores.",
+                    style: TextStyle(fontSize: 18, color: Colors.grey),
+                  ),
                 ],
               ),
             ))),
