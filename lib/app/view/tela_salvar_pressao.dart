@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:saude_tech/app/database/dao/pressao_arterial_dao.dart';
@@ -13,7 +15,7 @@ class SalvarPressao extends StatefulWidget {
 }
 dynamic id;
 String valor;
-int valorPressaoArterial;
+double valorPressaoArterial;
 class _SalvarPressaoState extends State<SalvarPressao> {
   PressaoArterialDAO pressaoArterialDAO = new PressaoArterialDAO();
 
@@ -25,7 +27,7 @@ class _SalvarPressaoState extends State<SalvarPressao> {
       id = pressao['id'] as int;
       valor = pressao['valorPressaoArterial'] as String;
     }
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown]);
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return Scaffold(
         appBar: AppBar(
           title: Text("Tech Saúde"),
@@ -49,6 +51,7 @@ class _SalvarPressaoState extends State<SalvarPressao> {
                   CamposForm(
                       dica: "",
                       rotulo: "Valor Pressão Arterial",
+                      obscure: false,
                       valorInicial: "",
                       vincularValor: (value) =>
                           valor = value,
@@ -60,15 +63,15 @@ class _SalvarPressaoState extends State<SalvarPressao> {
                       descricao: 'Salvar',
                       function: () {
                         pressaoArterialDAO.salvar(PressaoArterial(valorPressaoArterial: valor));
-                        valorPressaoArterial = int.parse(valor);
-                        if(valorPressaoArterial <= 70) {
-                          Navigator.pushNamed(context, '/glicemiaBaixa');
-                        } else if(valorPressaoArterial <= 99) {
-                          Navigator.pushNamed(context, '/glicemiaNormal');
-                        } else if(valorPressaoArterial >= 100) {
-                          Navigator.pushNamed(context, '/glicemiaAlta');
+                        valorPressaoArterial = double.parse(valor);
+                        if(valorPressaoArterial <= 9.6) {
+                          Navigator.pushNamed(context, '/pressaoBaixa');
+                        } else if(valorPressaoArterial <= 12.8) {
+                          Navigator.pushNamed(context, '/pressaoNormal');
+                        } else if(valorPressaoArterial >= 14.9) {
+                          Navigator.pushNamed(context, '/pressaoAlta');
                         } else {
-                          Navigator.pushNamed(context, '/listarGlicemia');
+                          Navigator.pushNamed(context, '/listarPressao');
                         }
                       },
                       color: Colors.green,

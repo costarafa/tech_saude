@@ -32,7 +32,7 @@ class _MenuDoisState extends State<TelaLogin> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown]);
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return Scaffold(
         resizeToAvoidBottomInset: true,
         body: Padding(

@@ -7,6 +7,9 @@ import 'package:saude_tech/app/view/login.dart';
 import 'package:saude_tech/app/view/menu_info_glicemia_alta.dart';
 import 'package:saude_tech/app/view/menu_info_glicemia_baixa.dart';
 import 'package:saude_tech/app/view/menu_info_glicemia_normal.dart';
+import 'package:saude_tech/app/view/menu_info_pressao_alta.dart';
+import 'package:saude_tech/app/view/menu_info_pressao_baixa.dart';
+import 'package:saude_tech/app/view/menu_info_pressao_normal.dart';
 import 'package:saude_tech/app/view/menu_lateral.dart';
 import 'package:saude_tech/app/view/tela_alterar_pressao.dart';
 import 'package:saude_tech/app/view/tela_cadastro.dart';
@@ -41,8 +44,11 @@ class MyApp extends StatelessWidget {
         '/alterarPressao': (context) => AlterarPressao(),
         '/cadastrarGlicemia': (context) => SalvarGlicemia(),
         '/glicemiaBaixa': (context) => MenuGlicemiaBaixa(),
+        '/pressaoBaixa': (context) => MenuPressaoBaixa(),
         '/glicemiaNormal': (context) => MenuGlicemiaNormal(),
+        '/pressaoNormal': (context) => MenuPressaoNormal(),
         '/glicemiaAlta': (context) => MenuGlicemiaAlta(),
+        '/pressaoAlta': (context) => MenuPressaoAlta(),
       },
     );
   }

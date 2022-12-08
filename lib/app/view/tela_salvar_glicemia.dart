@@ -25,7 +25,7 @@ class _SalvarGlicemiaState extends State<SalvarGlicemia> {
       id = glicemia['id'] as int;
       valor = glicemia['valorGlicemia'] as String;
     }
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown]);
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return Scaffold(
         appBar: AppBar(
           title: Text("Tech Saúde"),
@@ -49,6 +49,7 @@ class _SalvarGlicemiaState extends State<SalvarGlicemia> {
                   CamposForm(
                       dica: "",
                       rotulo: "Valor Glicemia",
+                      obscure: false,
                       valorInicial: "",
                       vincularValor: (value) =>
                           valor = value,

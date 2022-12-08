@@ -13,7 +13,7 @@ class MenuGlicemiaNormal extends StatefulWidget {
 class _MenuMenuGlicemiaNormal extends State<MenuGlicemiaNormal> {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown]);
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return OrientationBuilder(builder: (context, orientation)
     {
       return Scaffold(

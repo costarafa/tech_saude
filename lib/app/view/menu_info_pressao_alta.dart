@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:saude_tech/app/view/componentes/botao.dart';
-import 'package:saude_tech/app/view/componentes/cartao_generico.dart';
 
-class MenuGlicemiaAlta extends StatefulWidget {
-  const MenuGlicemiaAlta({Key key}) : super(key: key);
+class MenuPressaoAlta extends StatefulWidget {
+  const MenuPressaoAlta({Key key}) : super(key: key);
 
   @override
-  State<MenuGlicemiaAlta> createState() => _MenuMenuGlicemiaAlta();
+  State<MenuPressaoAlta> createState() => _MenuMenuPressaoAlta();
 }
 
-class _MenuMenuGlicemiaAlta extends State<MenuGlicemiaAlta> {
+class _MenuMenuPressaoAlta extends State<MenuPressaoAlta> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -42,7 +40,7 @@ class _MenuMenuGlicemiaAlta extends State<MenuGlicemiaAlta> {
                           fontWeight: FontWeight.bold, fontSize: 40),
                     ),
                     Text(
-                      "Sua glicemia está alta",
+                      "Sua pressão está alta",
                       style: TextStyle(fontSize: 25),
                     ),
                     Text(
@@ -53,10 +51,10 @@ class _MenuMenuGlicemiaAlta extends State<MenuGlicemiaAlta> {
                       height: 20,
                     ),
                     SizedBox(
-                      child: Image.asset('assets/sintomas-hiper.png', width: 400, height: 400),
+                      child: Image.asset('assets/sintomas-hiper.jpg', width: 400, height: 400),
                     ),
                     SizedBox(
-                      child: Image.asset('assets/dicas-hiperglicemia.png', width: 400, height: 500),
+                      child: Image.asset('assets/dicas-pressao-alta.png', width: 400, height: 500),
                     ),
                   ],
                 ),

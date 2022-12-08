@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:saude_tech/app/view/componentes/botao.dart';
-import 'package:saude_tech/app/view/componentes/cartao_generico.dart';
 
-class MenuGlicemiaAlta extends StatefulWidget {
-  const MenuGlicemiaAlta({Key key}) : super(key: key);
+class MenuPressaoNormal extends StatefulWidget {
+  const MenuPressaoNormal({Key key}) : super(key: key);
 
   @override
-  State<MenuGlicemiaAlta> createState() => _MenuMenuGlicemiaAlta();
+  State<MenuPressaoNormal> createState() => _MenuMenuPressaoNormal();
 }
 
-class _MenuMenuGlicemiaAlta extends State<MenuGlicemiaAlta> {
+class _MenuMenuPressaoNormal extends State<MenuPressaoNormal> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -37,26 +35,23 @@ class _MenuMenuGlicemiaAlta extends State<MenuGlicemiaAlta> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Cuidado",
+                      "Parabéns!",
                       style: TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 40),
                     ),
                     Text(
-                      "Sua glicemia está alta",
+                      "Sua pressão está normal!",
                       style: TextStyle(fontSize: 25),
                     ),
                     Text(
-                      "Siga as orientações médicas para controlar. Em caso de mal estar recorrente procure um médico. Sintomas:",
+                      "Continue com os seus cuidados e não deixe de consultar o médico regularmente!",
                       style: TextStyle(fontSize: 20), textAlign: TextAlign.center,
                     ),
                     SizedBox(
-                      height: 20,
+                      child: Image.asset('assets/dicas-pressao.png', width: 400, height: 400),
                     ),
                     SizedBox(
-                      child: Image.asset('assets/sintomas-hiper.png', width: 400, height: 400),
-                    ),
-                    SizedBox(
-                      child: Image.asset('assets/dicas-hiperglicemia.png', width: 400, height: 500),
+                      child: Image.asset('assets/dicas-previnir-pressao.jpg', width: 400, height: 400),
                     ),
                   ],
                 ),

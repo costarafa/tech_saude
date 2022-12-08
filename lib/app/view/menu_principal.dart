@@ -20,7 +20,7 @@ class _MenuDoisState extends State<MenuPrincipal> {
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown]);
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return OrientationBuilder(builder: (context, orientation)
     {
       return Scaffold(

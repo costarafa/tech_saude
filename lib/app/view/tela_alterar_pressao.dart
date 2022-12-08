@@ -23,7 +23,7 @@ class _AlterarPressaoState extends State<AlterarPressao> {
       Map<String, Object> pressao = argumento as Map<String, Object>;
       valor = pressao['valorPressaoArterial'] as String;
     }
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown]);
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return Scaffold(
         appBar: AppBar(
           title: Text("Tech Saúde"),
