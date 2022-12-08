@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:saude_tech/app/services/validatorService.dart';
 import 'package:saude_tech/app/view/componentes/botao.dart';
 import 'package:saude_tech/app/view/componentes/input.dart';
-import 'package:saude_tech/app/view/menuLateral.dart';
+import 'package:saude_tech/app/view/menu_lateral.dart';
 
 class TelaLogin extends StatefulWidget {
   const TelaLogin({Key key}) : super(key: key);
@@ -32,7 +32,7 @@ class _MenuDoisState extends State<TelaLogin> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown]);
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return Scaffold(
         resizeToAvoidBottomInset: true,
         body: Padding(
@@ -79,6 +79,7 @@ class _MenuDoisState extends State<TelaLogin> {
                       rotulo: "Senha",
                       teclado: TextInputType.visiblePassword,
                       controller: senhaController,
+                      obscure: true,
                       vincularValor: (text) {
                         senha = text;
                         String pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
@@ -96,10 +97,10 @@ class _MenuDoisState extends State<TelaLogin> {
                   Botao(
                       descricao: 'Entrar',
                       function: () {
-                        if (email != null && email.length == 0) {
+                        if (email == null) {
                           mensagem = "Informe o Email";
                         }
-                        else if (senha != null && senha.length == 0) {
+                        else if (senha == null) {
                           mensagem = "Informe a senha";
                         } else if (mensagem == null){
                           mensagem = "Bem vindo!";

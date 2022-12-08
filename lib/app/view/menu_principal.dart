@@ -1,7 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:saude_tech/app/database/dao/glicemia_dao.dart';
 import 'package:saude_tech/app/view/componentes/botao.dart';
 import 'package:saude_tech/app/view/componentes/cartao_generico.dart';
+
+import '../domain/entities/glicemia.dart';
 
 class MenuPrincipal extends StatefulWidget {
   const MenuPrincipal({Key key}) : super(key: key);
@@ -11,9 +15,12 @@ class MenuPrincipal extends StatefulWidget {
 }
 
 class _MenuDoisState extends State<MenuPrincipal> {
+  GlicemiaDAO glicemiaDAO = new GlicemiaDAO();
+
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown]);
+    final user = FirebaseAuth.instance.currentUser;
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return OrientationBuilder(builder: (context, orientation)
     {
       return Scaffold(
@@ -37,7 +44,7 @@ class _MenuDoisState extends State<MenuPrincipal> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Olá Adrieli",
+                      "Olá" + user.displayName,
                       style: TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 40),
                     ),
@@ -50,11 +57,9 @@ class _MenuDoisState extends State<MenuPrincipal> {
                     ),
                     CartaoGenerico(
                       title: Text("VALOR: 180 MMHG"),
-                      subtitle: Text("30/09/2022"),
                     ),
                     CartaoGenerico(
                       title: Text("VALOR: 160 MMHG"),
-                      subtitle: Text("30/09/2022"),
                     ),
                     SizedBox(
                       height: 15,
@@ -71,11 +76,9 @@ class _MenuDoisState extends State<MenuPrincipal> {
                     ),
                     CartaoGenerico(
                       title: Text("VALOR: 200 MH/DL"),
-                      subtitle: Text("30/09/2022"),
                     ),
                     CartaoGenerico(
                       title: Text("VALOR: 100 MH/DL"),
-                      subtitle: Text("30/09/2022"),
                     ),
                     SizedBox(
                       height: 15,

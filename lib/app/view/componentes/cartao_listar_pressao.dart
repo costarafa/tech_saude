@@ -16,8 +16,6 @@ class _ListarPressaoState extends State<ListarPressao> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown]);
-    return OrientationBuilder(builder: (context, orientation) {
       return Scaffold(
         appBar: AppBar(
           title: Text("Tech Saúde"),
@@ -40,9 +38,6 @@ class _ListarPressaoState extends State<ListarPressao> {
           ),
         ),
         body:
-        GridView.count(
-          crossAxisCount: (orientation == Orientation.portrait) ? 1 : 2,
-          children: [
             FutureBuilder(
                 future: pressaoArterialDAO.listarTodos(),
                 builder:
@@ -55,19 +50,11 @@ class _ListarPressaoState extends State<ListarPressao> {
                         var pressao = lista[contador];
                         return SizedBox(
                             child: ListTile(
-                              title: Text(pressao.valorPressaoArterial.toString()),
+                              title: Text(pressao.valorPressaoArterial.toString() +" MMHG"),
                               trailing: SizedBox(
                                 width: 100,
                                 child: Row(
                                   children: [
-                                    IconButton(
-                                      icon: const Icon(Icons.edit),
-                                      color: Colors.black38,
-                                      onPressed: () {
-                                        Navigator.pushNamed(context, '/alterarPressao',
-                                            arguments: pressao.toString());
-                                      },
-                                    ),
                                     IconButton(
                                         icon: const Icon(Icons.delete),
                                         color: Colors.black38,
@@ -106,13 +93,11 @@ class _ListarPressaoState extends State<ListarPressao> {
                         );
                       });
                 }
-            )
-          ],
         ),
       );
-    });
+    }
 
 
 
-  }
+
 }

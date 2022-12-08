@@ -38,6 +38,7 @@ class CamposForm extends StatelessWidget {
           controller: controller,
           validator: validador,
           onSaved: save,
+          obscureText: obscure,
         ));
   }
 }

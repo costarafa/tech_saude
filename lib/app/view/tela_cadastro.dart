@@ -5,7 +5,7 @@ import 'package:saude_tech/app/domain/entities/usuario.dart';
 import 'package:saude_tech/app/view/componentes/botao.dart';
 import 'package:saude_tech/app/view/componentes/cartao_generico.dart';
 import 'package:saude_tech/app/view/componentes/input.dart';
-import 'package:saude_tech/app/view/menuLateral.dart';
+import 'package:saude_tech/app/view/menu_lateral.dart';
 
 class TelaCadastro extends StatefulWidget {
   const TelaCadastro({Key key}) : super(key: key);
@@ -33,7 +33,7 @@ class _MenuDoisState extends State<TelaCadastro> {
       cpf = usuario['cpf'] as String;
       celular = usuario['celular'] as String;
     }
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown]);
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return Scaffold(
         resizeToAvoidBottomInset: true,
         body: Padding(
@@ -58,6 +58,7 @@ class _MenuDoisState extends State<TelaCadastro> {
                       dica: "",
                       rotulo: "Email",
                       valorInicial: "",
+                      obscure: false,
                       vincularValor: (value) =>
                       email = value,
                       teclado: TextInputType.emailAddress),
@@ -68,6 +69,7 @@ class _MenuDoisState extends State<TelaCadastro> {
                       dica: "",
                       rotulo: "Nome completo",
                       valorInicial: "",
+                      obscure: false,
                       vincularValor: (value) =>
                       nome = value,
                       teclado: TextInputType.name),
@@ -78,6 +80,7 @@ class _MenuDoisState extends State<TelaCadastro> {
                       dica: "",
                       rotulo: "cpf",
                       valorInicial: "",
+                      obscure: false,
                       vincularValor: (value) =>
                       cpf = value,
                       teclado: TextInputType.number),
@@ -87,6 +90,7 @@ class _MenuDoisState extends State<TelaCadastro> {
                   CamposForm(
                       dica: "",
                       rotulo: "Senha",
+                      obscure: true,
                       valorInicial: "",
                       vincularValor: (value) =>
                       senha = value,
@@ -98,6 +102,7 @@ class _MenuDoisState extends State<TelaCadastro> {
                       dica: "",
                       rotulo: "Celular",
                       valorInicial: "",
+                      obscure: false,
                       vincularValor: (value) =>
                       celular = value,
                       teclado: TextInputType.number),

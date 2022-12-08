@@ -19,8 +19,6 @@ GlicemiaDAO glicemiaDAO = new GlicemiaDAO();
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown]);
-    return OrientationBuilder(builder: (context, orientation) {
         return Scaffold(
         appBar: AppBar(
           title: Text("Tech Saúde"),
@@ -42,10 +40,7 @@ GlicemiaDAO glicemiaDAO = new GlicemiaDAO();
             ),
           ),
         ),
-    body:  
-    GridView.count(
-          crossAxisCount: (orientation == Orientation.portrait) ? 1 : 1,
-          children: [
+    body:
     FutureBuilder(
             future: glicemiaDAO.listarTodos(),
             builder:
@@ -57,22 +52,11 @@ GlicemiaDAO glicemiaDAO = new GlicemiaDAO();
                   itemBuilder: (context, contador) {
                     var glicemia = lista[contador];
                     return ListTile(
-                      title: Text(glicemia.valorGlicemia),
+                      title: Text(glicemia.valorGlicemia + ' MH/DL'),
                       trailing: SizedBox(
                         width: 100,
                         child: Row(
                           children: [
-                            IconButton(
-                              icon: const Icon(Icons.edit),
-                              color: Colors.black38,
-                              onPressed: () {
-                                Navigator.pushNamed(context, '/editarGlicemia',
-                                        arguments: glicemia)
-                                    .then((value) {
-                                  setState(() {});
-                                });
-                              },
-                            ),
                             IconButton(
                                 icon: const Icon(Icons.delete),
                                 color: Colors.black38,
@@ -86,9 +70,8 @@ GlicemiaDAO glicemiaDAO = new GlicemiaDAO();
                                             ElevatedButton(
                                               child: const Text("Sim"),
                                               onPressed: () {
-                                                setState(() {
                                                 glicemiaDAO.excluir(int.parse(glicemia.id.toString()));
-                                                Navigator.pushNamed(context, '/listarGlicemia');
+                                                setState(() {
                                                 });
                                                 Navigator.pop(context);
                                               },
@@ -109,13 +92,11 @@ GlicemiaDAO glicemiaDAO = new GlicemiaDAO();
                     );
                   });
             }
-            )
-],
         ),
       );
-    });
+    }
           
           
           
-  }
+
 }
